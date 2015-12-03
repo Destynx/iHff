@@ -7,20 +7,19 @@
     background-color: #F2F2F2;
     padding: 0;
     font-family: Arial;
-    
-}
-footer {
     background-image: url('http://localhost:50953/images/background.jpg');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
+    padding-left: 19%;
+    padding-right: 20%;
+    padding-bottom: 125px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
 
-    padding-left: 19%;
-    padding-right: 20%;
+
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -40,6 +39,10 @@ textarea {
 .banner {
     text-align: center;
     margin-bottom: -4px;
+
+}
+footer {
+    margin-bottom: 100px;
 
 }
 a {
