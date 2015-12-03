@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Internationaal Haarlems Film Festival</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="banner">
+        <img src="../images/banner.jpg">
+    </div>
+    <div class="navbar">
+            <div class="navbar-collapse collapse">
+                    <div id="nav1">@Html.ActionLink("Home", "Index", "Home")</div>
+                    <div id="nav2">@Html.ActionLink("Films / Activiteiten", "Index", "Home")</div>
+                    <div id="nav3">@Html.ActionLink("Eigen Agenda", "Index", "Home")</div>
+                    <div id="nav4">@Html.ActionLink("Locaties", "Locaties", "Home")</div>
+                    <div id="nav5">@Html.ActionLink("Contact", "Contact", "Home")</div>
+            </div>
+        </div>
+    <div class="container body-content">     
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Internationaal Haarlems Film Festival</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

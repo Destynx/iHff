@@ -1,0 +1,33 @@
+﻿@model IHFF.Models.WishList
+@{
+    ViewBag.Title = "Home Page";
+}
+<body>
+    <div id="home-wrapper-left">
+        <h2>Welkom op de nieuwe website voor het IHFF!</h2>
+        <p>
+            Waarom deze website? Celluloid & Silver organiseert al sinds enige tijd het internationaal Haarlems filmfestival. Intussen is het festival uitgegroeid tot een vijfdaags cultureel festival. Dit heeft ervoor gezorgd dat het festival een duidelijke website nodig heeft met informatie en de mogelijkheid om tickets te reserveren.
+            <br><br/>
+            Film is nog steeds de basis maar er zijn ook lezingen, discussiefora en een tentoonstelling. Ook culinair Haarlem neemt deel in de vorm van speciale filmmenu’s.
+            Wilt u meer weten over de activiteiten dit jaar? Klik dan snel op "Films / Activiteiten" voor het complete schema!
+            <br><br/>
+            Heeft u vragen of wilt u meer over ons weten? Klik dan op "Contact".
+        </p>
+        <h2>Nieuw! Nu ook een eigen agenda creëren!</h2>
+        <p>
+            Vanaf nu kunt u ook een eigen agenda instellen!  Voor een geslaagde avond moet u vooral niet vergeten om een ook een restaurant te reserveren!
+            <br><br />
+            Klik op "Eigen Agenda" om zelf uw programma samen te stellen!
+        </p>
+            <p style="">Heeft u al een eigen agenda gemaakt?
+        
+        @using (Html.BeginForm("Search", "Events"))
+        {
+            @Html.TextBox("SearchWishlist")
+            <input type="submit" value="Search" />
+            //TODO: add controller. Add database-search query, add variables to view
+            
+        }
+        <p>
+    </div>
+</body>

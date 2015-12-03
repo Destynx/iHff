@@ -1,0 +1,94 @@
+﻿html {
+    background-color: #E8E8E8;
+}
+
+ body {
+
+    background-color: #F2F2F2;
+    padding: 0;
+    font-family: Arial;
+    
+}
+footer {
+    background-image: url('http://localhost:50953/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+
+    padding-left: 19%;
+    padding-right: 20%;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.banner {
+    text-align: center;
+    margin-bottom: -4px;
+
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+
+h2 {
+
+    font-size: 20px;
+    font-weight: bold;
+}
+p {
+    font-size: 13px;
+}
+#home-wrapper-left {
+    margin-right: 60%;
+}
+
+.navbar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    background-color: #FF7400;
+    height: 50px;
+    font-size: 20px;
+    
+
+}
+#nav1,#nav2,#nav3,#nav4 {
+    margin-top: 0px;
+    padding-top: 10px;
+    display: inline-block;
+    width:16.66%;
+    text-align: center;
+    font-weight: bold;
+    width: 19%;
+    color: white;
+    height: 30px;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: 1px;
+    
+}
+
+#nav5 {
+    display: inline-block;
+    width: 19%;
+    text-align: center;
+    font-weight: bold;
+    width: 19%;
+}
