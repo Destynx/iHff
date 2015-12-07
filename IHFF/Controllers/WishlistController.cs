@@ -13,33 +13,43 @@ namespace IHFF.Controllers
 
         //public list<Wishlistitems> Wishlist = new list<Wishlistitems>();
         // WishListItem wishlistItem;
+        //WishList wishlist;
         public ActionResult Index()
         {
             return View();
         }
 
         //Om een item te verwijderen
-        public ActionResult VerwijderItem(/*WishListItem item*/)
+        public ActionResult DeleteItem(/*WishListItem item*/)
         {
-            //this.WishListItem = WishListItem;
+            //this.wishlistItem = WishListItem;
             
             return View();
         }
 
         //Om een item uit de wishlist aan te passen
-        public ActionResult PasItemAan()
+        public ActionResult EditItem(/*WishListItem item*/)
         {
+            //this.wishlistItem = item
+
             return View();
         }
 
         //Om naar de betaling te gaan
-        public ActionResult Betaling()
+        public ActionResult Payment()
         {
             return View();
         }
 
         //Om de wishlist te laten zien
         public ActionResult ShowWishlist()
+        {
+            return View();
+        }
+
+
+        //Om de wishlist op te slaan
+        public ActionResult SaveWishlist()
         {
             return View();
         }
