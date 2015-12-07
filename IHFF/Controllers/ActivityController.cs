@@ -8,10 +8,19 @@ namespace IHFF.Controllers
 {
     public class ActivityController : Controller
     {
-        // GET: Activity
         public ActionResult Index()
         {
             return View();
         }
+
+        /* */
+
+        public ActionResult ShowLightbox()
+        {
+            //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database
+            return View();
+        }
+
+
     }
 }
