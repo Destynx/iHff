@@ -21,6 +21,22 @@ namespace IHFF.Controllers
             return View();
         }
 
+        public ActionResult AddToSelectedItemslist()
+        {
+            //Door het klikken op de knop in de lightbox moet via hier het aangeklikte item naar de geselecteerde items lijst
+            return View();
+        }
 
+        public ActionResult AddToWishlist()
+        {
+            //Geselecteerde items lijst in de database zetten als Wishlist + Generen van een unieke code
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddToWishlist()
+        {
+            return View(/* Ga naar Wishlist-Pagina*/ );
+        }
     }
 }
