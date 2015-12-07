@@ -6,40 +6,42 @@ using System.Web.Mvc;
 
 namespace IHFF.Controllers
 {
-    public class BestellingController : Controller
+    public class WishlistController : Controller
     {
         //
         // GET: /Bestelling/
 
         //public list<Wishlistitems> Wishlist = new list<Wishlistitems>();
-        // hoi
+        // WishListItem wishlistItem;
         public ActionResult Index()
         {
             return View();
         }
 
         //Om een item te verwijderen
-        public void VerwijderItem()
+        public ActionResult VerwijderItem(/*WishListItem item*/)
         {
-
+            //this.WishListItem = WishListItem;
+            
+            return View();
         }
 
         //Om een item uit de wishlist aan te passen
-        public void PasItemAan()
+        public ActionResult PasItemAan()
         {
-
+            return View();
         }
 
         //Om naar de betaling te gaan
-        public void Betaling()
+        public ActionResult Betaling()
         {
-
+            return View();
         }
 
         //Om de wishlist te laten zien
-        public void ShowWishlist()
+        public ActionResult ShowWishlist()
         {
-
+            return View();
         }
     }
 }
