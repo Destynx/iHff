@@ -204,9 +204,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BesteldItem.cs" />
+    <Compile Include="Models\Film.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Lezing.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\WishList.cs" />
+    <Compile Include="Models\WishlistItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

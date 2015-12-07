@@ -5,8 +5,7 @@ using System.Web;
 
 namespace IHFF.Models
 {
-    public class WishList
+    public class Restaurant : WishlistItem
     {
-        List<BesteldItem> wishList = new List<BesteldItem>();
     }
 }
