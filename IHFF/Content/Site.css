@@ -1,5 +1,7 @@
-﻿/html {
-    background-color: #E8E8E8;
+﻿html {
+    background-color: #FFF;
+    margin: 0;
+    padding:0;
 }
 
  body {
@@ -16,24 +18,39 @@
 }
  header 
  {
-     overflow: hidden;
      background-image: url('../images/banner.jpg');
-     margin : 0;
+     background-repeat:no-repeat;
+     background-size: cover;
+     margin: 0;
+     padding: 0;
  }
  article{
-     margin-top: -17px;
-     width: 70%;
-     padding-left: 10%;
+     box-sizing:border-box;
+     margin:0;
+     width: 60%;
+     padding: 30px;
+     float:left;
       /*2% 51% 2% 10%;*/
  }
  aside {
-     width: 30%
+     box-sizing:border-box;
+     padding:30px;
+     margin:0;
+     width: 40%;
+     float:right;
  }
 
 /* Set padding to keep content from hitting the edges */
 section {
-    
+    background-position:bottom;
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding:1px 0 150px 0;
+    margin:0;
+}
 
+.clear {
+    clear: both;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -56,8 +73,11 @@ textarea {
 
 }
 footer {
-    margin-bottom: 100px;
-
+    box-sizing:border-box;
+    background-color:#797979;
+    padding:25px;
+    margin:0;
+    color:#FFF;
 }
 
 a {
@@ -78,29 +98,27 @@ p {
 }
 
 nav {
-    position: relative;
-    margin-top: -4px;
+    /*position: relative;*/
+    /*margin-top: -4px;*/
     margin-left: auto;
     margin-right: auto;
     width: auto;
     background-color: #FF7400;
     font-size: 20px;
-    
+    clear:both;
 
 }
 #nav1,#nav2,#nav3,#nav4 {
-    margin-top: 0px;
-    padding-top: 12px;
-    padding-bottom: 6px;
+    margin: 0px;
+    padding: 12px;
+    /*padding-bottom: 6px;*/
+    box-sizing: border-box;
     display: inline-block;
-    width:16.66%;
     text-align: center;
     font-weight: bold;
     width: 19%;
     color: white;
-    border-right-style: solid;
-    border-right-color: black;
-    border-right-width: 1px;
+    border-right: 1px solid black;
     
 }
 

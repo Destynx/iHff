@@ -34,7 +34,7 @@ namespace IHFF.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToWishlist()
+        public ActionResult AddToWishlist1()
         {
             //Een redirect naar de wishlist pagina nadat er op de "toevoegen aan wishlist" is geklikt
             return View(/* Ga naar Wishlist-Pagina*/ );
