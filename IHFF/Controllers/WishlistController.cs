@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IHFF.Models;
 
 namespace IHFF.Controllers
 {
@@ -12,23 +13,25 @@ namespace IHFF.Controllers
         // GET: /Bestelling/
 
         //public list<Wishlistitems> Wishlist = new list<Wishlistitems>();
-        // WishListItem wishlistItem;
-        //WishList wishlist;
-        public ActionResult Index()
+        WishlistItem wishlistItem;
+        WishList wishlist;
+        public ActionResult Index(WishList list)
         {
+            this.wishlist = list;
             return View();
         }
 
         //Om een item te verwijderen
-        public ActionResult DeleteItem(/*WishListItem item*/)
+        public ActionResult DeleteItem(WishlistItem item)
         {
-            //this.wishlistItem = WishListItem;
+            this.wishlistItem = item;
             
+
             return View();
         }
 
         //Om een item uit de wishlist aan te passen
-        public ActionResult EditItem(/*WishListItem item*/)
+        public ActionResult EditItem(WishlistItem item)
         {
             //this.wishlistItem = item
 
@@ -42,8 +45,12 @@ namespace IHFF.Controllers
         }
 
         //Om de wishlist te laten zien
-        public ActionResult ShowWishlist()
+        public ActionResult ShowWishlist(List<WishlistItem> wishlist)
         {
+            foreach(WishlistItem item in wishlist)
+            {
+
+            }
             return View();
         }
 
