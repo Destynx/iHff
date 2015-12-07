@@ -197,7 +197,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Classes\DatabaseHandeler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BestellingController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -278,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Activity\" />
     <Folder Include="Views\Bestelling\" />
   </ItemGroup>
   <ItemGroup>
