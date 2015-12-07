@@ -7,5 +7,6 @@ namespace IHFF.Models
 {
     public class WishList
     {
+
     }
 }
