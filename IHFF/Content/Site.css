@@ -1,24 +1,38 @@
-﻿html {
+﻿/html {
     background-color: #E8E8E8;
 }
 
  body {
-
-    background-color: #F2F2F2;
+    
+    background-color: #FFF;
     padding: 0;
     font-family: Arial;
-    background-image: url('http://localhost:50953/images/background.jpg');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
-    padding-left: 19%;
-    padding-right: 20%;
-    padding-bottom: 125px;
+    margin: 0 13%;
+    float: unset;
+    
 }
+ header 
+ {
+     overflow: hidden;
+     background-image: url('../images/banner.jpg');
+     margin : 0;
+ }
+ article{
+     margin-top: -17px;
+     width: 70%;
+     padding-left: 10%;
+      /*2% 51% 2% 10%;*/
+ }
+ aside {
+     width: 30%
+ }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
-
+section {
+    
 
 }
 
@@ -29,7 +43,7 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+/* Set width on the form input elements since they're 100% wide by default*/ 
 input,
 select,
 textarea {
@@ -38,13 +52,14 @@ textarea {
 
 .banner {
     text-align: center;
-    margin-bottom: -4px;
+    margin-bottom: 0px;
 
 }
 footer {
     margin-bottom: 100px;
 
 }
+
 a {
     color: white;
     text-decoration: none;
@@ -59,29 +74,30 @@ p {
     font-size: 13px;
 }
 #home-wrapper-left {
-    margin-right: 60%;
+    margin-right: 55%;
 }
 
-.navbar {
+nav {
+    position: relative;
+    margin-top: -4px;
     margin-left: auto;
     margin-right: auto;
-    width: 1200px;
+    width: auto;
     background-color: #FF7400;
-    height: 50px;
     font-size: 20px;
     
 
 }
 #nav1,#nav2,#nav3,#nav4 {
     margin-top: 0px;
-    padding-top: 10px;
+    padding-top: 12px;
+    padding-bottom: 6px;
     display: inline-block;
     width:16.66%;
     text-align: center;
     font-weight: bold;
     width: 19%;
     color: white;
-    height: 30px;
     border-right-style: solid;
     border-right-color: black;
     border-right-width: 1px;
@@ -93,5 +109,4 @@ p {
     width: 19%;
     text-align: center;
     font-weight: bold;
-    width: 19%;
 }
