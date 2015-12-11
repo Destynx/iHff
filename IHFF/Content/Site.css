@@ -1,25 +1,56 @@
 ﻿html {
-    background-color: #E8E8E8;
+    background-color: #FFF;
+    margin: 0;
+    padding:0;
 }
 
  body {
-
-    background-color: #F2F2F2;
+    
+    background-color: #FFF;
     padding: 0;
     font-family: Arial;
-    background-image: url('http://localhost:50953/images/background.jpg');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
-    padding-left: 19%;
-    padding-right: 20%;
-    padding-bottom: 125px;
+    margin: 0 13%;
+    float: unset;
+    
 }
+ header 
+ {
+     background-image: url('../images/banner.jpg');
+     background-repeat:no-repeat;
+     background-size: cover;
+     margin: 0;
+     padding: 0;
+ }
+ article{
+     box-sizing:border-box;
+     margin:0;
+     width: 60%;
+     padding: 30px;
+     float:left;
+      /*2% 51% 2% 10%;*/
+ }
+ aside {
+     box-sizing:border-box;
+     padding:30px;
+     margin:0;
+     width: 40%;
+     float:right;
+ }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+section {
+    background-position:bottom;
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding:1px 0 150px 0;
+    margin:0;
+}
 
-
+.clear {
+    clear: both;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -29,7 +60,7 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+/* Set width on the form input elements since they're 100% wide by default*/ 
 input,
 select,
 textarea {
@@ -38,13 +69,17 @@ textarea {
 
 .banner {
     text-align: center;
-    margin-bottom: -4px;
+    margin-bottom: 0px;
 
 }
 footer {
-    margin-bottom: 100px;
-
+    box-sizing:border-box;
+    background-color:#797979;
+    padding:25px;
+    margin:0;
+    color:#FFF;
 }
+
 a {
     color: white;
     text-decoration: none;
@@ -59,32 +94,31 @@ p {
     font-size: 13px;
 }
 #home-wrapper-left {
-    margin-right: 60%;
+    margin-right: 55%;
 }
 
-.navbar {
+nav {
+    /*position: relative;*/
+    /*margin-top: -4px;*/
     margin-left: auto;
     margin-right: auto;
-    width: 1200px;
+    width: auto;
     background-color: #FF7400;
-    height: 50px;
     font-size: 20px;
-    
+    clear:both;
 
 }
 #nav1,#nav2,#nav3,#nav4 {
-    margin-top: 0px;
-    padding-top: 10px;
+    margin: 0px;
+    padding: 12px;
+    /*padding-bottom: 6px;*/
+    box-sizing: border-box;
     display: inline-block;
-    width:16.66%;
     text-align: center;
     font-weight: bold;
     width: 19%;
     color: white;
-    height: 30px;
-    border-right-style: solid;
-    border-right-color: black;
-    border-right-width: 1px;
+    border-right: 1px solid black;
     
 }
 
@@ -93,5 +127,4 @@ p {
     width: 19%;
     text-align: center;
     font-weight: bold;
-    width: 19%;
 }
