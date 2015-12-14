@@ -25,7 +25,7 @@ namespace IHFF.Controllers
         public ActionResult DeleteItem(WishlistItem item)
         {
 
-            this.wishlistitem = ;
+            this.wishlistitem = item;
             
 
             return View();
@@ -56,11 +56,13 @@ namespace IHFF.Controllers
         //Om de wishlist op te slaan
         public ActionResult SaveWishlist()
         {
+            
             return View();
         }
 
-        public ActionResult RetrieveWishlist()
+        public ActionResult RetrieveWishlist(string tekst)
         {
+            int code = int.Parse(tekst);
 
             return View();
         }
