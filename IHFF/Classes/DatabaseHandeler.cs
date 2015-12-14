@@ -13,6 +13,9 @@ namespace IHFF.Classes
 
         public static void UpdateWishlist() { }
 
-        //private Wishlist GetWishlist() { }
+        public static void GetWishlist() { }
+
+
+
     }
 }
