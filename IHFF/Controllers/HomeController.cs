@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IHFF.Models;
 
 namespace IHFF.Controllers
 {
@@ -30,6 +31,14 @@ namespace IHFF.Controllers
         public ActionResult RetrieveWishlist()
         {
             //Het opvragen van een eerder in de database opgeslagen WishList.
+            if (ModelState.IsValid)
+            {
+                // WishList retrieveWishlist = **database connection.
+                // If (WishlistCode == DatabaseCode)
+                // { redirect to WishList page with all items}
+                // Else 
+                // { Message: Code incorrect probeer opnieuw }
+            }
             return View();
         }
     }
