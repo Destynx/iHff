@@ -7,5 +7,7 @@ namespace IHFF.Models
 {
     public class Lezing : Product
     {
+        string Spreker;
+        string Onderwerp;
     }
 }

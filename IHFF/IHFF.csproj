@@ -204,13 +204,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Locatie.cs" />
     <Compile Include="Models\WishlistItem.cs" />
     <Compile Include="Models\Film.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Lezing.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\WishList.cs" />
     <Compile Include="Models\Product.cs" />

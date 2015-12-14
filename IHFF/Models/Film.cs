@@ -9,6 +9,6 @@ namespace IHFF.Models
     {
         string Genre;
         string[] Acteurs;
-
+        int Zaalnummer;
     }
 }
