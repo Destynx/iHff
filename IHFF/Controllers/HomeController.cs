@@ -26,5 +26,11 @@ namespace IHFF.Controllers
 
             return View();
         }
+
+        public ActionResult RetrieveWishlist()
+        {
+            //Het opvragen van een eerder in de database opgeslagen WishList.
+            return View();
+        }
     }
 }
