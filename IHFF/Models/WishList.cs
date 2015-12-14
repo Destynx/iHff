@@ -8,7 +8,7 @@ namespace IHFF.Models
     public class WishList
     {
         int wishListCode = 0;
-        List<BesteldItem> wishList = new List<BesteldItem>();
+        List<WishlistItem> wishList = new List<WishlistItem>();
 
         public void NewList()
         {

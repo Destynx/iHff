@@ -13,7 +13,7 @@ namespace IHFF.Controllers
         // GET: /Bestelling/
 
         //public list<Wishlistitems> Wishlist = new list<Wishlistitems>();
-        WishlistItem wishlistItem;
+        WishlistItem wishlistitem;
         WishList wishlist;
         public ActionResult Index(WishList list)
         {
@@ -24,7 +24,8 @@ namespace IHFF.Controllers
         //Om een item te verwijderen
         public ActionResult DeleteItem(WishlistItem item)
         {
-            this.wishlistItem = item;
+
+            this.wishlistitem = ;
             
 
             return View();
@@ -47,17 +48,20 @@ namespace IHFF.Controllers
         //Om de wishlist te laten zien
         public ActionResult ShowWishlist(List<WishlistItem> wishlist)
         {
-            foreach(WishlistItem item in wishlist)
-            {
 
-            }
-            return View();
+            return View(wishlist);
         }
 
 
         //Om de wishlist op te slaan
         public ActionResult SaveWishlist()
         {
+            return View();
+        }
+
+        public ActionResult RetrieveWishlist()
+        {
+
             return View();
         }
     }
