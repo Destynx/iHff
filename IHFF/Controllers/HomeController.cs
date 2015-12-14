@@ -39,8 +39,9 @@ namespace IHFF.Controllers
                 // { redirect to WishList page with all items}
                 // Else 
                 // { Message: Code incorrect probeer opnieuw }
+                return View(code);
             }
-            return View(code);
+            return RedirectToAction("~/Bestelling/...cshtml");
         }
     }
 }
