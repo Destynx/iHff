@@ -7,6 +7,13 @@ namespace IHFF.Models
 {
     public class WishList
     {
-        List<BesteldItem> wishList = new List<BesteldItem>();
+        int wishListCode = 0;
+        List<WishlistItem> wishList = new List<WishlistItem>();
+
+        public void NewList()
+        {
+            Random rnd = new Random();
+            wishListCode = rnd.Next(0, 999999);
+        }
     }
 }

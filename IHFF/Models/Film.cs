@@ -5,7 +5,10 @@ using System.Web;
 
 namespace IHFF.Models
 {
-    public class Film : WishlistItem
+    public class Film : Product
     {
+        string Genre;
+        string[] Acteurs;
+
     }
 }

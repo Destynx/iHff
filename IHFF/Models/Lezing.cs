@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IHFF.Models
 {
-    public class Lezing : WishlistItem
+    public class Lezing : Product
     {
     }
 }

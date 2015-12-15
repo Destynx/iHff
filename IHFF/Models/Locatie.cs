@@ -5,7 +5,10 @@ using System.Web;
 
 namespace IHFF.Models
 {
-    public class Restaurant : Product
+    public class Locatie
     {
+        string Adres;
+        string Postcode;
+        string Plaatsnaam;
     }
 }
