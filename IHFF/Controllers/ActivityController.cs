@@ -8,7 +8,7 @@ namespace IHFF.Controllers
 {
     public class ActivityController : Controller
     {
-        public ActionResult Index()
+        public ActionResult ShowActivity()
         {
             return View();
         }
