@@ -7,5 +7,9 @@ namespace IHFF.Models
 {
     public class Restaurant : Product
     {
+        string Keuken;
+        DateTime Openingstijd;
+        DateTime Dinnerswitch;
+        DateTime Sluitingstijd;
     }
 }

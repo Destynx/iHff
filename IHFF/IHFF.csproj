@@ -204,12 +204,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Locatie.cs" />
     <Compile Include="Models\WishlistItem.cs" />
     <Compile Include="Models\Film.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Lezing.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\WishList.cs" />
     <Compile Include="Models\Product.cs" />
@@ -276,6 +274,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\RetrieveWishlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

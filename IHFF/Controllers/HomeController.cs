@@ -28,7 +28,8 @@ namespace IHFF.Controllers
             return View();
         }
 
-        public ActionResult RetrieveWishlist()
+        [HttpPost]
+        public ActionResult RetrieveWishlist(WishList code)
         {
             //Het opvragen van een eerder in de database opgeslagen WishList.
             if (ModelState.IsValid)
@@ -38,8 +39,9 @@ namespace IHFF.Controllers
                 // { redirect to WishList page with all items}
                 // Else 
                 // { Message: Code incorrect probeer opnieuw }
+                return View(code);
             }
-            return View();
+            return RedirectToAction("~/Bestelling/...cshtml");
         }
     }
 }

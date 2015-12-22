@@ -5,10 +5,10 @@ using System.Web;
 
 namespace IHFF.Models
 {
-    public class Film : Product
+    public class Locatie
     {
-        string Genre;
-        string[] Acteurs;
-        int Zaalnummer;
+        string Adres;
+        string Postcode;
+        string Plaatsnaam;
     }
 }
