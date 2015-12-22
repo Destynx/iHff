@@ -13,8 +13,6 @@ namespace IHFF.Controllers
             return View();
         }
 
-        /* */
-
         public ActionResult ShowLightbox()
         {
             //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database
