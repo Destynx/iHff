@@ -14,7 +14,7 @@ using IHFF.Models;
 
 namespace IHFF
 {
-    public class EmailService : IIdentityMessageService
+    /*public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
         {
@@ -106,4 +106,5 @@ namespace IHFF
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+    */
 }

@@ -15,7 +15,7 @@ namespace IHFF.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
+        /*private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
@@ -481,5 +481,6 @@ namespace IHFF.Controllers
             }
         }
         #endregion
+        */
     }
 }
