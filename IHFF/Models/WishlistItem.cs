@@ -8,8 +8,9 @@ namespace IHFF.Models
     public class WishlistItem
     {
         //TODO: Dit dynamisch maken.
-        Product item = new Product();
-        DateTime Besteltijd = new DateTime();
-        int Stoel = new int();        
+        public Product item = new Product();
+        public DateTime Besteltijd = new DateTime();
+        public int StoelNummer;
+        public int Aantal;   
     }
 }
