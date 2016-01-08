@@ -11,5 +11,6 @@ namespace IHFF.Models
         public string Naam;
         public Locatie Locatie;
         public string Beschrijving;
+        public int Plaatsen;
     }
 }
