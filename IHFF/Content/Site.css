@@ -37,8 +37,6 @@
 }
 
 .modalDialog > div  {
-	/*margin-right: auto;*/
-    /*margin-left: auto;*/
     width: 400px;
 	position: center;
 	margin: 10% auto;

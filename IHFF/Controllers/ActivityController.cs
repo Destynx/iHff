@@ -8,6 +8,12 @@ namespace IHFF.Controllers
 {
     public class ActivityController : Controller
     {
+        public ActionResult Agenda()
+        {
+            ViewBag.Message = "De agenda van het IHFF";
+
+            return View();
+        }
         public ActionResult ShowActivity()
         {
             return View();
