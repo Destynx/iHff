@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IHFF.Classes;
+using IHFF.Models;
 
 namespace IHFF.Controllers
 {
@@ -19,29 +21,30 @@ namespace IHFF.Controllers
             return View();
         }
 
-        public ActionResult ShowLightbox()
+        /*             
+        public ActionResult ShowLightbox(Geklikte Item)
         {
+            
             //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database
-            return View();
+            Product product = DatabaseHandler.GetProduct(Geklikte Item);
+            
+            return View(product);                                                
         }
+        */
 
-        public ActionResult AddToSelectedItemslist()
+        public ActionResult AddToItemslist(/*productID*/)
         {
             //Door het klikken op de knop in de lightbox moet via hier het aangeklikte item naar de geselecteerde items lijst
+
+
             return View();
         }
 
         public ActionResult AddToWishlist()
         {
-            //Geselecteerde items lijst in de database zetten als Wishlist + Generen van een unieke code
+            
+            //Geselecteerde items lijst in de database zetten als Wishlist
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddToWishlist1() /* AddToWishList heeft een [HttpPost] en de naam zou hetzelfde moeten zijn */
-        {
-            //Een redirect naar de wishlist pagina nadat er op de "toevoegen aan wishlist" is geklikt
-            return View(/* Ga naar Wishlist-Pagina*/ );
         }
     }
 }

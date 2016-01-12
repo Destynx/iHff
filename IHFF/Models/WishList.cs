@@ -7,8 +7,10 @@ namespace IHFF.Models
 {
     public class WishList
     {
-        int wishListCode = 0;
-        List<WishlistItem> wishList = new List<WishlistItem>();
+        public int wishListCode = 0;
+        public bool betaald = false;
+        public List<WishlistItem> itemList = new List<WishlistItem>();
+        public float TotaalPrijs;
 
         public void NewList()
         {

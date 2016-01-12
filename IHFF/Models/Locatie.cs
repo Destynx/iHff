@@ -7,8 +7,10 @@ namespace IHFF.Models
 {
     public class Locatie
     {
-        string Adres;
-        string Postcode;
-        string Plaatsnaam;
+        public int Locatie_ID;
+        public string Adres;
+        public string Postcode;
+        public string Naam;
+        public bool IsRestaurant;
     }
 }

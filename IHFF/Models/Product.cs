@@ -7,9 +7,10 @@ namespace IHFF.Models
 {
     public class Product
     {
-        int ID;
-        string Naam;
-        Locatie Locatie;
-        string Beschrijving;
+        public int ID;
+        public string Naam;
+        public Locatie Locatie;
+        public string Beschrijving;
+        public int Plaatsen;
     }
 }
