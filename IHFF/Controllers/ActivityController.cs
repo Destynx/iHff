@@ -21,24 +21,39 @@ namespace IHFF.Controllers
             return View();
         }
 
-        /*             
-        public ActionResult ShowLightbox(Geklikte Item)
+        /*   
+        public ActionResult ShowAgendaItems(*Lijst uit DatabaseHandler*)
         {
-            
+            list<Product> AgendaList = DatabaseHandler.GetAllProductsList();
+            Viewbag.AgendaList = AgendaList;
+
+            return View();
+        }
+                      
+        public ActionResult ShowLightbox(Geklikte Item)
+        {            
             //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database
-            Product product = DatabaseHandler.GetProduct(Geklikte Item);
-            
+            Product product = DatabaseHandler.GetProduct(Geklikte Item);            
+
             return View(product);                                                
         }
-        */
+       
 
-        public ActionResult AddToItemslist(/*productID*/)
+        public ActionResult AddToItemslist(productID) //Toevoegen aan de geselecteerde itemslijst op de pagina
         {
             //Door het klikken op de knop in de lightbox moet via hier het aangeklikte item naar de geselecteerde items lijst
+
+            List<Product> selectedItemsList = new List<Product>();
+
+            Product product = DatabaseHandler.GetProduct(productID)
+
+            selectedItemsList.Add(product)
+
 
 
             return View();
         }
+         */
 
         public ActionResult AddToWishlist()
         {
