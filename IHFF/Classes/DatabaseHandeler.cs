@@ -12,7 +12,7 @@ namespace IHFF.Classes
         static string connString = "Provider=Microsoft.ACE.OLEDB.12.0;" +
                                    "Data Source=194.171.20.12;" +
                                    "Catalog=MVCdb08;" +
-                                   "Persist Security Info=false" +
+                                   "Persist Security Info=false;" +
                                    "User ID=MVCgrp08;" +
                                    "Password=Kacaphkor6;";
 
