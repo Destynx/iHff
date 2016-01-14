@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using IHFF.Models;
@@ -9,28 +9,27 @@ namespace IHFF.Classes
 {
     public class DatabaseHandler
     {
-        static string connString = "Provider=Microsoft.ACE.OLEDB.12.0;" +
-                                   "Data Source=194.171.20.12;" +
+        static string connString = "Data Source=194.171.20.12;" +
                                    "Catalog=MVCdb08;" +
                                    "Persist Security Info=false;" +
                                    "User ID=MVCgrp08;" +
                                    "Password=Kacaphkor6;";
 
-        static OleDbConnection conn;
+        static SqlConnection conn;
         static string sql;
-        static OleDbCommand command;
+        static SqlCommand command;
 
         public static void AddWishlist(WishList wishlist)
         {
-            conn = new OleDbConnection(connString);
+            conn = new SqlConnection(connString);
             conn.Open();
             string sql = string.Format("INSERT INTO Wishlist (Wishlist_Code, Betaald) values ('{0}', '{1}')", wishlist.wishListCode, wishlist.betaald);
-            command = new OleDbCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
             command.ExecuteNonQuery();
             foreach (WishlistItem wi in wishlist.itemList)
             {
                 sql = string.Format("INSERT INTO Bestellingen (Wishlist_ID, Product_ID, Aantal, Stoel) values ({0}, {1}, {2}, {3})", wishlist.wishListCode, wi.item.ID, wi.Aantal, wi.StoelNummer);
-                command = new OleDbCommand(sql, conn);
+                command = new SqlCommand(sql, conn);
                 command.ExecuteNonQuery();
             }
             conn.Close();
@@ -38,13 +37,13 @@ namespace IHFF.Classes
 
         public static void UpdateWishlist(WishList wishlist)
         {
-            conn = new OleDbConnection(connString);
+            conn = new SqlConnection(connString);
             conn.Open();
             sql = string.Format("DELETE FROM Bestellingen WHERE Wishlist_ID=" + wishlist.wishListCode);
             foreach (WishlistItem wi in wishlist.itemList)
             {
                 sql = string.Format("INSERT INTO Bestellingen (Wishlist_ID, Product_ID, Aantal, Stoel) values ({0}, {1}, {2}, {3})", wishlist.wishListCode, wi.item.ID, wi.Aantal, wi.StoelNummer);
-                command = new OleDbCommand(sql, conn);
+                command = new SqlCommand(sql, conn);
                 command.ExecuteNonQuery();
             }
         }
@@ -54,17 +53,17 @@ namespace IHFF.Classes
             WishList wishList = new WishList();
             wishList.itemList = new List<WishlistItem>();
             wishList.wishListCode = wishListCode;
-            conn = new OleDbConnection(connString);
+            conn = new SqlConnection(connString);
             conn.Open();
             sql = string.Format("SELECT Betaald FROM Wishlist WHERE Wishlist_Code = {0};", wishListCode);
-            command = new OleDbCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
             wishList.betaald = (bool)command.ExecuteScalar();
             sql = string.Format("SELECT TotaalPrijs FROM Wishlist WHERE Wishlist_Code = {0};", wishListCode);
-            command = new OleDbCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
             wishList.TotaalPrijs = (float)command.ExecuteScalar();
             sql = string.Format("SELECT (Product_ID, Aantal, Stoel, TotaalPrijs) FROM Bestellingen WHERE Wishlist_ID = {0};", wishListCode);
-            command = new OleDbCommand(sql, conn);
-            OleDbDataReader rdr = command.ExecuteReader();
+            command = new SqlCommand(sql, conn);
+            SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
                 wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Product_ID"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"] });
@@ -76,17 +75,17 @@ namespace IHFF.Classes
         public static Product GetProduct(int Product_ID)
         {
             Product product = new Product();
-            conn = new OleDbConnection(connString);
+            conn = new SqlConnection(connString);
             conn.Open();
             sql = string.Format("SELECT * FROM Producten WHERE Item_ID = {0};", Product_ID);
-            command = new OleDbCommand(sql, conn);
-            OleDbDataReader rdr = command.ExecuteReader();
+            command = new SqlCommand(sql, conn);
+            SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
                 product = new Product { ID = Product_ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"]};
             }
             sql = string.Format("SELECT * FROM Locaties WHERE Locatie_ID = {0}", product.Locatie.Locatie_ID);
-            command = new OleDbCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
             rdr = command.ExecuteReader();
             while (rdr.Read())
             {
@@ -99,7 +98,7 @@ namespace IHFF.Classes
             {
                 Restaurant restaurant = new Restaurant();
                 sql = string.Format("SELECT * FROM Restaurants WHERE Locatie_ID = {0};", product.Locatie.Locatie_ID);
-                command = new OleDbCommand(sql, conn);
+                command = new SqlCommand(sql, conn);
                 rdr = command.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -114,11 +113,11 @@ namespace IHFF.Classes
         public static List<Product> GetAllProducts()
         {
             List<Product> AlleProducten = new List<Product>();
-            conn = new OleDbConnection(connString);
+            conn = new SqlConnection(connString);
             conn.Open();
             sql = string.Format("SELECT * FROM Producten");
-            command = new OleDbCommand(sql, conn);
-            OleDbDataReader rdr = command.ExecuteReader();
+            command = new SqlCommand(sql, conn);
+            SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
                 AlleProducten.Add(new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] });
