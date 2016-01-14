@@ -1,7 +1,64 @@
-﻿
+﻿@using IHFF.Models
 @{
     ViewBag.Title = "Agenda";
 }
 
 <h2>Agenda</h2>
+
+<h2>Woensdag</h2>
+<p> @foreach (Product p in ViewBag.Agendalist)
+    {
+        if (p.Dag == "Woensdag")
+        {
+            
+        }
+    } 
+</p>
+
+<h2>Donderdag</h2>
+<p>
+    @foreach (Product p in ViewBag.Agendalist)
+    {
+        if (p.Dag == "Donderdag")
+        {
+            
+        }
+    }
+</p>
+
+<h2>Vrijdag</h2>
+<p>
+    @foreach (Product p in ViewBag.Agendalist)
+    {
+        if (p.Dag == "Vrijdag")
+        {
+            
+        }
+    }
+</p>
+
+<h2>Zaterdag</h2>
+<p>
+    @foreach (Product p in ViewBag.Agendalist)
+    {
+        if (p.Dag == "Zaterdag")
+        {
+            
+        }
+    }
+</p>
+
+<h2>Zondag</h2>
+<p>
+    @foreach (Product p in ViewBag.Agendalist)
+    {
+        if (p.Dag == "Zondag")
+        {
+            
+        }
+    }
+</p>
+
+
+
 
