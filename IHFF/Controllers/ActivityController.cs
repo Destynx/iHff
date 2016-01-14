@@ -22,7 +22,7 @@ namespace IHFF.Controllers
         }
 
         /*   
-        public ActionResult ShowAgendaItems(*Lijst uit DatabaseHandler*)
+        public ActionResult ShowAgendaItems()
         {
             list<Product> AgendaList = DatabaseHandler.GetAllProductsList();
             Viewbag.AgendaList = AgendaList;
@@ -30,10 +30,10 @@ namespace IHFF.Controllers
             return View();
         }
                       
-        public ActionResult ShowLightbox(Geklikte Item)
+        public ActionResult ShowLightbox(GeklikteItem)
         {            
             //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database
-            Product product = DatabaseHandler.GetProduct(Geklikte Item);            
+            Product product = DatabaseHandler.GetProduct(GeklikteItem);            
 
             return View(product);                                                
         }
@@ -45,9 +45,10 @@ namespace IHFF.Controllers
 
             List<Product> selectedItemsList = new List<Product>();
 
-            Product product = DatabaseHandler.GetProduct(productID)
+            Product product = DatabaseHandler.GetProduct(productID);
 
-            selectedItemsList.Add(product)
+            selectedItemsList.Add(product);
+
 
 
 
