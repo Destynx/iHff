@@ -3,39 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IHFF.Classes;
+using IHFF.Models;
 
 namespace IHFF.Controllers
 {
     public class ActivityController : Controller
     {
+        public ActionResult Agenda()
+        {
+            ViewBag.Message = "De agenda van het IHFF";
+
+            return View();
+        }
         public ActionResult ShowActivity()
         {
+            WishList wishlist = new WishList();
             return View();
         }
 
-        public ActionResult ShowLightbox()
+        /*   
+        public ActionResult ShowAgendaItems()
         {
-            //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database
+            list<Product> AgendaList = DatabaseHandler.GetAllProductsList();
+            Viewbag.AgendaList = AgendaList;
+
             return View();
         }
+                      
+        public ActionResult ShowLightbox(GeklikteItem)
+        {            
+            //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database
+            Product product = DatabaseHandler.GetProduct(GeklikteItem);            
 
-        public ActionResult AddToSelectedItemslist()
+            return View(product);                                                
+        }
+       
+
+        public ActionResult AddToItemslist(productID) //Toevoegen aan de geselecteerde itemslijst op de pagina
         {
             //Door het klikken op de knop in de lightbox moet via hier het aangeklikte item naar de geselecteerde items lijst
+
+            List<Product> selectedItemsList = new List<Product>();
+
+            Product product = DatabaseHandler.GetProduct(productID);
+
+            selectedItemsList.Add(product);
+
+
+
+
             return View();
         }
+         */
 
         public ActionResult AddToWishlist()
         {
-            //Geselecteerde items lijst in de database zetten als Wishlist + Generen van een unieke code
+            
+            //Geselecteerde items lijst in de database zetten als Wishlist
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddToWishlist1() /* AddToWishList heeft een [HttpPost] en de naam zou hetzelfde moeten zijn */
-        {
-            //Een redirect naar de wishlist pagina nadat er op de "toevoegen aan wishlist" is geklikt
-            return View(/* Ga naar Wishlist-Pagina*/ );
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using IHFF.Models;
+using IHFF.Classes;
 
 namespace IHFF.Controllers
 {
@@ -14,57 +15,50 @@ namespace IHFF.Controllers
 
         WishlistItem wishlistitem;
         WishList wishlist;
-        public ActionResult Index(WishList list)
-        {
-            this.wishlist = list;
-            return View();
-        }
-
-        //Om een item te verwijderen
-        public ActionResult DeleteItem(WishlistItem item)
-        {
-
-            this.wishlistitem = item;
-            //Roep de methode aan die een item uit de database verwijdert
-
-            return View();
-        }
-
-        //Om een item uit de wishlist aan te passen
-        public ActionResult EditItem(WishlistItem item)
-        {
-            this.wishlistitem = item;
-            //Roep de methode aan die de item in de database aanpast
-            return View();
-        }
-
-        //Om naar de betaling te gaan
-        public ActionResult Payment()
+        int code;
+        public ActionResult Index()
         {
             return View();
-        }
-
-        //Om de wishlist te laten zien
-        public ActionResult ShowWishlist(List<WishlistItem> wishlist)
-        {
-
-            return View(wishlist);
             
         }
 
 
-        //Om de wishlist op te slaan
-        public ActionResult SaveWishlist()
+
+        //Om een item te verwijderen
+        public ActionResult DeleteItem(WishList wishlist)
         {
-            //roep methode aan die de wishlist opslaat in de database
+            DatabaseHandler.UpdateWishlist(wishlist);
+            return View(wishlist);
+        }
+
+        //Om een item uit de wishlist aan te passen
+        public ActionResult EditItem(WishList wishlist)
+        {
+            DatabaseHandler.UpdateWishlist(wishlist);
             return View();
+        }
+
+        //Om naar de betaling te gaan
+        public ActionResult Payment(WishList wishlist)
+        {
+
+            return View();
+        }
+
+        //Om de wishlist op te slaan
+        public ActionResult SaveWishlist(WishList wishlist)
+        {
+            
+            DatabaseHandler.UpdateWishlist(wishlist);
+            return View(); 
+
         }
 
         public ActionResult RetrieveWishlist(string tekst)
         {
             int code = int.Parse(tekst);
-
-            return View();
+            this.wishlist = DatabaseHandler.GetWishlist(code);
+            return View(wishlist.itemList);
         }
     }
 }
