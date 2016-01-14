@@ -1,0 +1,17 @@
+﻿@using IHFF.Models
+@model IHFF.Models.WishlistModel
+@{
+    ViewBag.Title = "Wishlist";
+}
+<h2>Wishlist</h2>
+<h3>Wishlist Ophalen</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.TextBoxFor(m => m.code)
+    //@Html.TextBox("SearchWishlist")
+    <input type="submit" value="Search" />
+
+    //TODO: add controller. Add database-search query, add variables to view
+
+}
