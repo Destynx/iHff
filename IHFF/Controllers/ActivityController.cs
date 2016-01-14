@@ -18,6 +18,7 @@ namespace IHFF.Controllers
         }
         public ActionResult ShowActivity()
         {
+            WishList wishlist = new WishList();
             return View();
         }
 
