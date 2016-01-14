@@ -10,9 +10,9 @@ namespace IHFF.Classes
     public class DatabaseHandler
     {
         static string connString = "Data Source=194.171.20.12;" +
-                                   "Catalog=MVCdb08;" +
+                                   "Initial Catalog=MVCdb08;" +
                                    "Persist Security Info=false;" +
-                                   "User ID=MVCgrp08;" +
+                                   "User id=MVCgrp08;" +
                                    "Password=Kacaphkor6;";
 
         static SqlConnection conn;
