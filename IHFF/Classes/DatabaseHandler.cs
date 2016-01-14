@@ -106,9 +106,27 @@ namespace IHFF.Classes
                     restaurant = new Restaurant { ID = product.ID, Naam = product.Naam, Beschrijving = product.Beschrijving, Locatie = product.Locatie, Plaatsen = product.Plaatsen, Keuken = (string)rdr["Soort_Keuken"], Openingstijd = (DateTime)rdr["Openingstijd"], Dinnerswitch = (DateTime)rdr["Dinertijd"], Sluitingstijd = (DateTime)rdr["Sluitingstijd"]};
                     //Checken of dit werkt.
                 }
+                conn.Close();
                 return restaurant;
             }
+            conn.Close();
             return product;
+        }
+
+        public static List<Product> GetAllProducts()
+        {
+            List<Product> AlleProducten = new List<Product>();
+            conn = new OleDbConnection(connString);
+            conn.Open();
+            sql = string.Format("SELECT * FROM Producten");
+            command = new OleDbCommand(sql, conn);
+            OleDbDataReader rdr = command.ExecuteReader();
+            while (rdr.Read())
+            {
+                AlleProducten.Add(new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"] });
+            }
+            conn.Close();
+            return AlleProducten;
         }
     }
 }
