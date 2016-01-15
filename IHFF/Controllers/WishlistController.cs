@@ -39,15 +39,34 @@ namespace IHFF.Controllers
 
         }
         //Om een item te verwijderen
-        public ActionResult DeleteItem(WishList wishlist)
+        public ActionResult DeleteItem(int wishlistId)
         {
+            /*
+            foreach(WishlistItem item in wishlist.itemList)
+            {
+                if (item.wishlistid == wishlistId)
+                {
+                    wishlist.itemList.Remove(item);
+                    
+                }
+            }
+            */
             DatabaseHandler.UpdateWishlist(wishlist);
             return View(wishlist);
         }
 
         //Om een item uit de wishlist aan te passen
-        public ActionResult EditItem(WishList wishlist)
+        public ActionResult EditItem(int wishlistId)
         {
+            /*
+            foreach(WishlistItem item in wishlist.itemList)
+            {
+                if(item.wishlistid == wishlistId)
+                {
+                    wishlist.itemList.Remove(item);
+                }
+            }
+            */
             DatabaseHandler.UpdateWishlist(wishlist);
             return View();
         }
@@ -61,13 +80,13 @@ namespace IHFF.Controllers
         }
 
         //Om de wishlist op te slaan
-        public ActionResult SaveWishlist(WishList wishlist)
+        public ActionResult SaveWishlist()
         {
-            
             DatabaseHandler.UpdateWishlist(wishlist);
             return View(); 
 
         }
+
         //Om de wishlist op te halen uit de database en te laten zien op de wishlistpagina
         public ActionResult RetrieveWishlist(string tekst)
         {
