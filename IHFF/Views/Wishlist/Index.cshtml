@@ -13,5 +13,12 @@
     <input type="submit" value="Search" />
 
     //TODO: add controller. Add database-search query, add variables to view
-
+    /*
+    Voor het showen van de wishlist
+    Misschien in een partial view?
+    @foreach (var Wishlistitem in Model)
+    {
+        <p>@Wishlistitem.product | @Wishlistitem.aantal | @Html.ActionLink("Delete", "DeleteItem", new { Wishlistitemid = Wishlistitem.WishlistitemId})<p>
+    }
+    */
 }

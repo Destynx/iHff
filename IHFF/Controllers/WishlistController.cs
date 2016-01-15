@@ -21,17 +21,18 @@ namespace IHFF.Controllers
 
         public ActionResult Index()
         {
+            //Moet hier een session worden aangemaakt als er een nieuwe wishlist gemaakt moet worden?
             return View();
         }
         [HttpPost]
         public ActionResult Index(WishlistModel model)
         {
-            int code = int.Parse(model.code);
+            code = int.Parse(model.code);
             this.wishlist = DatabaseHandler.GetWishlist(code);
             if (session != null)
             {
             FormsAuthentication.SetAuthCookie(wishlist.wishListCode.ToString(), false);
-            Session["loggedin_account"] = session;
+            Session["Aangemelde_Wishlist"] = session;
                 //session.wishlistCode = wishlist.wishListCode();
             }
             return View(wishlist.itemList);
