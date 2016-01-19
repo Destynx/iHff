@@ -30,16 +30,23 @@ namespace IHFF.Controllers
             return View();
         }
 
-        /*
-        public ActionResult GetItemInfo(GeklikteItem)
+        public ActionResult RestaurantOverzicht()
         {
-            //Het tonen van een lightbox on click en het vullen van die lightbox met informatie uit de database            
-            Product product = DatabaseHandler.GetProduct(GeklikteItem);
-
-            return View(product);
+            List<Restaurant> RestaurantList = DatabaseHandler.
+            ViewBag.RestaurantList = RestaurantList;            
+            return View();
         }
-       
         
+        public ActionResult RestautantInfo(int ID)
+        {
+            Restaurant restaurant = DatabaseHandler.GetRestaurant(ID);
+            WishlistItem wlitem = new WishlistItem { item = restaurant };
+            ViewBag.idR = ID;
+            ViewBag.restaurant = restaurant;
+            return View(wlitem);
+        }
+
+        /*
         public ActionResult AddToItemslist(productID) //Toevoegen aan de geselecteerde itemslijst op de pagina
         {
             //Door het klikken op de knop in de lightbox moet via hier het aangeklikte item naar de geselecteerde items lijst
@@ -51,7 +58,7 @@ namespace IHFF.Controllers
 
             return View();
         }
-        */ 
+        */
 
         public ActionResult AddToWishlist()
         {

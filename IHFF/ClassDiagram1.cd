@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IHFF.Classes.DatabaseHandler">
+    <Position X="12.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAAAAAIAAAAEABAAQAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Classes\DatabaseHandeler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Controllers.ActivityController">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAgAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ActivityController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Controllers.HomeController">
+    <Position X="8.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Controllers.WishlistController">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAMAAYEAAABAIAAAAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>Controllers\WishlistController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.Film" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Film.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.Lezing" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Lezing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.Locatie">
+    <Position X="10.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAhAIAAAgAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\Locatie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.Product" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAISAAgAAAAAAABAAAAAAAIAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.Restaurant" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAIAAAAAAAAAAAAAAAQAEAAAA=</HashCode>
+      <FileName>Models\Restaurant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.WishList">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAIQBAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\WishList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.WishlistItem">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAgAAAAAAAAgAAACAAAAAAAAA=</HashCode>
+      <FileName>Models\WishlistItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IHFF.Models.WishlistModel">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\WishlistModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

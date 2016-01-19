@@ -1,0 +1,27 @@
+﻿@model IHFF.Models.WishlistItem 
+
+@{
+    ViewBag.Title = "RestautantInfo";
+}
+
+<section style="background-image: url('@Url.Content("~/images/background.jpg")'); background-size:contain; background-color:#F2F2F2; min-height:750px;">
+    <article style="text-align:center">
+        <h2>@Model.item.Naam <br /><i>@Model.item.Dag</i></h2>
+        <p>
+            @ViewBag.Beschrijving
+        </p>
+        <p style="text-align:left; font-style:italic;">
+            @Model.item.Locatie.Naam - @Model.item.Locatie.Adres
+        </p>
+        <p>
+            @using (Html.BeginForm())
+            {
+            @Html.LabelFor(m => m.Aantal)
+                @Html.TextArea("Aantal")
+                @Html.ValidationMessageFor(m => m.Aantal)
+                <input type="submit" value="Toevoegen" />
+            }
+        </p>
+    </article>
+    <div class="clear"></div>
+</section>
