@@ -13,5 +13,6 @@ namespace IHFF.Models
         public string Beschrijving;
         public int Plaatsen;
         public string Dag;
+        public double Prijs;
     }
 }

@@ -15,19 +15,21 @@ namespace IHFF.Controllers
         // GET: /Bestelling/
 
         WishlistItem wishlistitem;
-        WishList wishlist;
+        WishList wishlist = new WishList();
         int code;
         private object session;
 
         public ActionResult Index()
         {
+            wishlist.NewList();
+            ViewBag.Model = wishlist;
             //Moet hier een session worden aangemaakt als er een nieuwe wishlist gemaakt moet worden?
             return View();
         }
         [HttpPost]
-        public ActionResult Index(WishlistModel model)
+        public ActionResult Index(WishList model)
         {
-            code = int.Parse(model.code);
+            code = model.wishListCode;
             this.wishlist = DatabaseHandler.GetWishlist(code);
             if (session != null)
             {
@@ -35,7 +37,7 @@ namespace IHFF.Controllers
             Session["Aangemelde_Wishlist"] = session;
                 //session.wishlistCode = wishlist.wishListCode();
             }
-            return View(wishlist.itemList);
+            return View(wishlist);
 
         }
         //Om een item te verwijderen
