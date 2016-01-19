@@ -2,11 +2,11 @@
 @{
     ViewBag.Title = "Agenda";
 }
-<section style="background-image: url('http://localhost:50953/images/background.jpg'); background-repeat:no-repeat">
+<section style="background-image: url('http://localhost:50953/images/background.jpg'); background-size:auto; background-color:#FFFFFF">
     <article style="text-align:center">
 
         <h2>Woensdag</h2>
-        <p>
+        <span>
             @foreach (Product p in ViewBag.Agendalist)
             {
 
@@ -17,7 +17,7 @@
                 <p>@p.Beschrijving</p>
                 }
             }
-            </p>
+            </span>
 
             <h2>Donderdag</h2>
             <p>
