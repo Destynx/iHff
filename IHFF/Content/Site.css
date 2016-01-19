@@ -5,7 +5,6 @@
 }
 
  body {
-    
     background-color: #FFF;
     padding: 0;
     font-family: Arial;
@@ -118,7 +117,9 @@ select,
 textarea {
     max-width: 280px;
 }
-
+.whitespace{
+    background-color: white;
+}
 .banner {
     text-align: center;
     margin-bottom: 0px;
@@ -132,10 +133,18 @@ footer {
     color:#FFF;
 }
 
+p > a{
+    font-size: larger;
+    font-weight: 900;
+    color: black;
+}
+
 a {
     color: white;
     text-decoration: none;
 }
+
+
 
 h2 {
 
