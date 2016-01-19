@@ -80,27 +80,29 @@ namespace IHFF.Classes
             sql = string.Format("SELECT * FROM Producten WHERE Item_ID = {0};", Product_ID);
             command = new SqlCommand(sql, conn);
             SqlDataReader rdr = command.ExecuteReader();
-            while (rdr.Read())
+            if (rdr.Read())
             {
                 product = new Product { ID = Product_ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"]};
             }
+            rdr.Close();
             sql = string.Format("SELECT * FROM Locaties WHERE Locatie_ID = {0}", product.Locatie.Locatie_ID);
             command = new SqlCommand(sql, conn);
             rdr = command.ExecuteReader();
-            while (rdr.Read())
+            if (rdr.Read())
             {
                 product.Locatie.Adres = string.Format((string)rdr["Straatnaam"] + " " + (int)rdr["Huisnummer"]);
                 product.Locatie.Naam = (string)rdr["Locatie_Naam"];
                 product.Locatie.Postcode = (string)rdr["Locatie_Postcode"];
                 product.Locatie.IsRestaurant = (bool)rdr["Restaurant"];
             }
+            rdr.Close();
             if (product.Locatie.IsRestaurant)
             {
                 Restaurant restaurant = new Restaurant();
                 sql = string.Format("SELECT * FROM Restaurants WHERE Locatie_ID = {0};", product.Locatie.Locatie_ID);
                 command = new SqlCommand(sql, conn);
                 rdr = command.ExecuteReader();
-                while (rdr.Read())
+                if (rdr.Read())
                 {
                     restaurant = new Restaurant { ID = product.ID, Naam = product.Naam, Beschrijving = product.Beschrijving, Locatie = product.Locatie, Plaatsen = product.Plaatsen, Keuken = (string)rdr["Soort_Keuken"], Openingstijd = (DateTime)rdr["Openingstijd"], Dinnerswitch = (DateTime)rdr["Dinertijd"], Sluitingstijd = (DateTime)rdr["Sluitingstijd"], Dag = (string)rdr["Dag"]};
                     //Checken of dit werkt.
