@@ -57,7 +57,15 @@ namespace IHFF.Classes
             conn.Open();
             sql = string.Format("SELECT Betaald FROM Wishlist WHERE Wishlist_Code = {0};", wishListCode);
             command = new SqlCommand(sql, conn);
-            wishList.betaald = (bool)command.ExecuteScalar();
+            try {
+                wishList.betaald = (bool)command.ExecuteScalar();
+            }
+            catch
+            {
+                wishList = new WishList();
+                wishList.NewList();
+                return wishList;
+            }
             sql = string.Format("SELECT TotaalPrijs FROM Wishlist WHERE Wishlist_Code = {0};", wishListCode);
             command = new SqlCommand(sql, conn);
             wishList.TotaalPrijs = (float)command.ExecuteScalar();

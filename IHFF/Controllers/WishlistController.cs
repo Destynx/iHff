@@ -22,9 +22,8 @@ namespace IHFF.Controllers
         public ActionResult Index()
         {
             wishlist.NewList();
-            ViewBag.Model = wishlist;
             //Moet hier een session worden aangemaakt als er een nieuwe wishlist gemaakt moet worden?
-            return View();
+            return View(wishlist);
         }
         [HttpPost]
         public ActionResult Index(WishList model)
