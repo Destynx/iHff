@@ -118,7 +118,7 @@ namespace IHFF.Classes
             return product;
         }
 
-        public static Product GetRestaurant(int Product_ID)
+        public static Restaurant GetRestaurant(int Product_ID)
         {
             Product product = new Product();
             conn = new SqlConnection(connString);
