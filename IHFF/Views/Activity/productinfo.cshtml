@@ -21,6 +21,7 @@
                 @Html.LabelFor(m => m.Aantal)
                 @Html.TextArea("Aantal")
                 @Html.ValidationMessageFor(m => m.Aantal)
+                <input type="hidden" name="hidden_id" value="@ViewBag.id" />
                 <input type="submit" value="Toevoegen"/>
             }
         </p>

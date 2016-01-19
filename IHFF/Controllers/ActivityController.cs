@@ -19,6 +19,16 @@ namespace IHFF.Controllers
             ViewBag.film = films;
             return View(wlitem);
         }
+        [HttpPost]
+        public ActionResult ProductInfo(FormCollection form)
+        {
+            int id;
+            int amount;
+            amount = Convert.ToInt32(form["Aantal"]);
+            id = Convert.ToInt32(form["hidden_id"]);
+
+            return View();
+        }
         public ActionResult Agenda()
         {
             ViewBag.Message = "De agenda van het IHFF";
@@ -30,35 +40,7 @@ namespace IHFF.Controllers
             return View();
         }
 
-        public ActionResult RestaurantOverzicht()
-        {
-            List<Restaurant> RestaurantList = DatabaseHandler.
-            ViewBag.RestaurantList = RestaurantList;            
-            return View();
-        }
-        
-        public ActionResult RestautantInfo(int ID)
-        {
-            Restaurant restaurant = DatabaseHandler.GetRestaurant(ID);
-            WishlistItem wlitem = new WishlistItem { item = restaurant };
-            ViewBag.idR = ID;
-            ViewBag.restaurant = restaurant;
-            return View(wlitem);
-        }
-
-        /*
-        public ActionResult AddToItemslist(productID) //Toevoegen aan de geselecteerde itemslijst op de pagina
-        {
-            //Door het klikken op de knop in de lightbox moet via hier het aangeklikte item naar de geselecteerde items lijst
-            List<Product> selectedItemsList = new List<Product>();
-
-            Product product = DatabaseHandler.GetProduct(productID);
-            selectedItemsList.Add(product);
-            ViewBag.selectedItemsList = selectedItemsList;
-
-            return View();
-        }
-        */
+   
 
         public ActionResult AddToWishlist()
         {
