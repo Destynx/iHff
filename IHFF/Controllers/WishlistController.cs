@@ -26,9 +26,9 @@ namespace IHFF.Controllers
             return View(wishlist);
         }
         [HttpPost]
-        public ActionResult Index(WishList model)
+        public ActionResult Index(int wishListCode)
         {
-            code = model.wishListCode;
+            code = wishListCode;
             this.wishlist = DatabaseHandler.GetWishlist(code);
             if (session != null)
             {
