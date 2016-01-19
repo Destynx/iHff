@@ -2,71 +2,19 @@
 @{
     ViewBag.Title = "Agenda";
 }
-<section style="background-image: url('http://localhost:50953/images/background.jpg'); background-size:auto; background-color:#FFFFFF">
+<section style="background-image: url('@Url.Content("~/images/background.jpg")'); background-size:contain; background-color:#f5f5f5">
     <article style="text-align:center">
-
-        <h2>Woensdag</h2>
-        <span>
             @foreach (Product p in ViewBag.Agendalist)
             {
-
-                if (p.Dag == "woensdag")
+                if (ViewBag.Day != p.Dag)
                 {
-                <hr />
-                <p>@p.Naam</p>
-                <p>@p.Beschrijving</p>
+                    <h2>@p.Dag</h2>
                 }
-            }
-            </span>
-
-            <h2>Donderdag</h2>
-            <p>
-                   
-                @foreach (Product p in ViewBag.Agendalist)
-                {
-                    if (p.Dag == "donderdag")
-                    {
                 <hr />
                 <p>@Html.ActionLink(p.Naam, "productinfo", "Activity", new { id = p.ID }, null)</p>
                 <p>@p.Beschrijving</p>
-                    }
-                }
-           </p>
-
-           <h2>Vrijdag</h2>
-           <p>
-           @foreach (Product p in ViewBag.Agendalist)
-           {
-               if (p.Dag == "vrijdag")
-               {
-                <p>@p.Beschrijving</p>
-               }
-           }
-           </p>
-
-           <h2>Zaterdag</h2>
-           <p>
-           @foreach (Product p in ViewBag.Agendalist)
-           {
-               if (p.Dag == "zaterdag")
-               {
-                <hr />
-                <p>@p.Beschrijving</p>
-               }
-           }
-           </p>
-
-           <h2>Zondag</h2>
-           <p>
-           @foreach (Product p in ViewBag.Agendalist)
-           {
-               if (p.Dag == "zondag")
-               {
-                <hr />
-                <p>@p.Beschrijving</p>
-               }
-           }
-           </p>
+                ViewBag.Day = p.Dag;
+            }
         </article>
     <div class="clear"></div>
 </section>

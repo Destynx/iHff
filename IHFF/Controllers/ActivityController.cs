@@ -24,6 +24,7 @@ namespace IHFF.Controllers
 
             List<Product> AgendaList = DatabaseHandler.GetAllProducts();
             ViewBag.AgendaList = AgendaList;
+            ViewBag.Day = "";
 
             return View();
         }
