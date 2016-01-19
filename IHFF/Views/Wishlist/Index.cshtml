@@ -1,5 +1,5 @@
 ﻿@using IHFF.Models
-@model IHFF.Models.WishList
+@model WishList
 
 
 @{
@@ -8,24 +8,13 @@
 <section style="background-color:#F2F2F2; padding-left:20vw; padding-right:20vw;">
     <section>
     <p style="float:left;">Om uw Eigen Agenda later aan te kunnen<br />passen heeft u de onderstaande code nodig.<br /><b>Onthoud deze code goed!</b><br /><br />
-    Code van de Eigen Agenda:  <b>@ViewBag.Model.wishListCode</b></p>
+    Code van de Eigen Agenda:  <b>@Model.wishListCode</b></p>
     <section style="float:right;"><h3>Wishlist Ophalen <br /></h3>
 
     @using (Html.BeginForm())
     {
         @Html.TextBoxFor(m => m.wishListCode)
-        //@Html.TextBox("SearchWishlist")
         <input type="submit" value="Search" />
-
-        //TODO: add controller. Add database-search query, add variables to view
-        /*
-        Voor het showen van de wishlist
-        Misschien in een partial view?
-        @foreach (var Wishlistitem in Model)
-        {
-            <p>@Wishlistitem.product | @Wishlistitem.aantal | @Html.ActionLink("Delete", "DeleteItem", new { Wishlistitemid = Wishlistitem.WishlistitemId})<p>
-        }
-        */
     }
     </section>
 </section>
@@ -33,9 +22,9 @@
     <section style="height:auto; padding:0;">
     <h1 style="float:left; width:5vw; margin-right:3vw;">Woensdag 23/4</h1>
     <section style="width:20vw;float:left;border-left:1px solid black;"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in ViewBag.Model.itemList)
+    @foreach (WishlistItem i in  Model.itemList)
     {
-        if (i.item.Dag == "Woensdag")
+        if (i.item.Dag == "woensdag")
         {
         <p>@i.Besteltijd  </p>
         <p>@i.item.Naam  </p>
@@ -45,9 +34,9 @@
     }
         </p></section>
     <section style="float:left;border-left:1px solid black"><p style="padding-left:2vw;">
-        @foreach(WishlistItem i in ViewBag.Model.itemList)
+        @foreach(WishlistItem i in Model.itemList)
         {
-            if(i.item.Dag == "Woensdag")
+            if(i.item.Dag == "woensdag")
             {
                 <p>€@i.item.Prijs</p>
                 <br />
@@ -59,9 +48,9 @@
     <section style="height:auto; padding:0;">
         <h1 style="float:left; width:5vw; margin-right:3vw;">Donderdag 24/4</h1>
         <section style="width:20vw;float:left;border-left:1px solid black;"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in ViewBag.Model.itemList)
+    @foreach (WishlistItem i in Model.itemList)
     {
-        if (i.item.Dag == "Donderdag")
+        if (i.item.Dag == "donderdag")
         {
         <p>@i.Besteltijd  </p>
         <p>@i.item.Naam  </p>
@@ -70,9 +59,9 @@
         }
     }</p></section>
         <section style="float:left;border-left:1px solid black"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in ViewBag.Model.itemList)
+    @foreach (WishlistItem i in Model.itemList)
     {
-        if (i.item.Dag == "Donderdag")
+        if (i.item.Dag == "donderdag")
         {
         <p>€@i.item.Prijs</p>
                 <br />
@@ -83,9 +72,9 @@
     <section style="height:auto; padding:0;">
         <h1 style="float:left; width:5vw; margin-right:3vw;">Vrijdag 25/4</h1>
         <section style="width:20vw;float:left;border-left:1px solid black;"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in ViewBag.Model.itemList)
+    @foreach (WishlistItem i in Model.itemList)
     {
-        if (i.item.Dag == "Vrijdag")
+        if (i.item.Dag == "vrijdag")
         {
         <p>@i.Besteltijd  </p>
         <p>@i.item.Naam  </p>
@@ -94,9 +83,9 @@
         }
     }</p></section>
         <section style="float:left;border-left:1px solid black"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in ViewBag.Model.itemList)
+    @foreach (WishlistItem i in Model.itemList)
     {
-        if (i.item.Dag == "Vrijdag")
+        if (i.item.Dag == "vrijdag")
         {
         <p>€@i.item.Prijs</p>
                 <br />
