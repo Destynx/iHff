@@ -10,6 +10,14 @@ namespace IHFF.Controllers
 {
     public class ActivityController : Controller
     {
+
+        public ActionResult ProductInfo(int ID)
+        {
+            Product films = DatabaseHandler.GetProduct(ID);
+            ViewBag.id = ID;
+
+            return View(films);
+        }
         public ActionResult Agenda()
         {
             ViewBag.Message = "De agenda van het IHFF";

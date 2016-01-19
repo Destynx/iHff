@@ -2,15 +2,17 @@
 @{
     ViewBag.Title = "Agenda";
 }
-<section style="background-image: url('http://localhost:50953/images/background.jpg')">
+<section style="background-image: url('http://localhost:50953/images/background.jpg'); background-repeat:no-repeat">
     <article style="text-align:center">
 
         <h2>Woensdag</h2>
         <p>
             @foreach (Product p in ViewBag.Agendalist)
             {
-                if (p.Dag == "Woensdag")
+
+                if (p.Dag == "woensdag")
                 {
+                <hr />
                 <p>@p.Naam</p>
                 <p>@p.Beschrijving</p>
                 }
@@ -19,51 +21,53 @@
 
             <h2>Donderdag</h2>
             <p>
+                   
                 @foreach (Product p in ViewBag.Agendalist)
                 {
                     if (p.Dag == "donderdag")
                     {
-                    <p>@p.Beschrijving</p>
+                <hr />
+                <p>@Html.ActionLink(p.Naam, "productinfo", "Activity", new { id = p.ID }, null)</p>
+                <p>@p.Beschrijving</p>
                     }
                 }
-                </p>
+           </p>
 
-                <h2>Vrijdag</h2>
-                <p>
-                    @foreach (Product p in ViewBag.Agendalist)
-                    {
-                        if (p.Dag == "Vrijdag")
-                        {
-                        <p>@p.Beschrijving</p>
-                        }
-                    }
-                    </p>
+           <h2>Vrijdag</h2>
+           <p>
+           @foreach (Product p in ViewBag.Agendalist)
+           {
+               if (p.Dag == "vrijdag")
+               {
+                <p>@p.Beschrijving</p>
+               }
+           }
+           </p>
 
-                    <h2>Zaterdag</h2>
-                    <p>
-                        @foreach (Product p in ViewBag.Agendalist)
-                        {
-                            if (p.Dag == "Zaterdag")
-                            {
-                            <p>@p.Beschrijving</p>
-                            }
-                        }
-                        </p>
+           <h2>Zaterdag</h2>
+           <p>
+           @foreach (Product p in ViewBag.Agendalist)
+           {
+               if (p.Dag == "zaterdag")
+               {
+                <hr />
+                <p>@p.Beschrijving</p>
+               }
+           }
+           </p>
 
-                        <h2>Zondag</h2>
-                        <p>
-                            @foreach (Product p in ViewBag.Agendalist)
-                            {
-                                if (p.Dag == "Zondag")
-                                {
-                                <p>@p.Beschrijving</p>
-                                }
-                            }
-                        </p>
-
-                        </article>
-    <aside>
-        </aside>
+           <h2>Zondag</h2>
+           <p>
+           @foreach (Product p in ViewBag.Agendalist)
+           {
+               if (p.Dag == "zondag")
+               {
+                <hr />
+                <p>@p.Beschrijving</p>
+               }
+           }
+           </p>
+        </article>
     <div class="clear"></div>
 </section>
 
