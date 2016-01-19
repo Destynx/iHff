@@ -66,8 +66,8 @@ namespace IHFF.Classes
             }
             sql = string.Format("SELECT TotaalPrijs FROM Wishlist WHERE Wishlist_Code = {0};", wishListCode);
             command = new SqlCommand(sql, conn);
-            wishList.TotaalPrijs = (float)command.ExecuteScalar();
-            sql = string.Format("SELECT (Product_ID, Aantal, Stoel, TotaalPrijs) FROM Bestellingen WHERE Wishlist_ID = {0};", wishListCode);
+            //wishList.TotaalPrijs = (float)command.ExecuteScalar();
+            sql = string.Format("SELECT (Product_ID, Aantal, TotaalPrijs, Stoel) FROM Bestellingen WHERE Wishlist_ID ="+ wishListCode);
             command = new SqlCommand(sql, conn);
             SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
