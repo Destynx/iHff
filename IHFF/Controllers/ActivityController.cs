@@ -14,9 +14,10 @@ namespace IHFF.Controllers
         public ActionResult ProductInfo(int ID)
         {
             Product films = DatabaseHandler.GetProduct(ID);
+            WishlistItem wlitem = new WishlistItem { item = films };
             ViewBag.id = ID;
-
-            return View(films);
+            ViewBag.film = films;
+            return View(wlitem);
         }
         public ActionResult Agenda()
         {
