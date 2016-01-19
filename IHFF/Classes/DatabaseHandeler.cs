@@ -90,7 +90,7 @@ namespace IHFF.Classes
             rdr = command.ExecuteReader();
             if (rdr.Read())
             {
-                product.Locatie.Adres = string.Format((string)rdr["Straatnaam"] + " " + (int)rdr["Huisnummer"]);
+                product.Locatie.Adres = string.Format((string)rdr["Straatnaam"] + " " + (int)rdr["Huisnummer"].ToString());
                 product.Locatie.Naam = (string)rdr["Locatie_Naam"];
                 product.Locatie.Postcode = (string)rdr["Locatie_Postcode"];
                 product.Locatie.IsRestaurant = (bool)rdr["Restaurant"];
