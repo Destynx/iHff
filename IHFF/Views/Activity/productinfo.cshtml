@@ -1,0 +1,17 @@
+﻿@model IHFF.Models.Product
+@{
+    ViewBag.Title = "productinfo";
+}
+
+<section style="background-image: url('@Url.Content("~/images/background.jpg")'); background-size:contain; background-color:#F2F2F2; min-height:750px;">
+    <article style="text-align:center">
+        <h2>@Model.Naam <i>(@Model.Dag)</i></h2>
+        <p>
+            @Model.Beschrijving
+        </p>
+        <p style="text-align:left; font-style:italic;">
+            @Model.Locatie.Naam - @Model.Locatie.Adres
+        </p>
+    </article>
+    <div class="clear"></div>
+</section>
