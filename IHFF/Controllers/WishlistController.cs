@@ -29,7 +29,11 @@ namespace IHFF.Controllers
         public ActionResult Index(int wishListCode)
         {
             code = wishListCode;
-            this.wishlist = DatabaseHandler.GetWishlist(code);
+            wishlist = DatabaseHandler.GetWishlist(code);
+            /*foreach(WishlistItem wli in wishlist.itemList)
+            {
+                DatabaseHandler.GetProduct(wli.item);
+            }*/
             if (session != null)
             {
             FormsAuthentication.SetAuthCookie(wishlist.wishListCode.ToString(), false);

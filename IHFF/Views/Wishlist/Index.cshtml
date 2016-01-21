@@ -21,75 +21,41 @@
     <div style="clear:both;"></div>
     <section style="height:auto; padding:0;">
     <h1 style="float:left; width:5vw; margin-right:3vw;">Woensdag 23/4</h1>
-    <section style="width:20vw;float:left;border-left:1px solid black;"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in  Model.itemList)
+    <section style="width:20vw;float:left;border-left:1px solid black;height:100%;border-right:1px solid black;padding:0,2vw;"><p style="padding-left:2vw;">
+    @foreach (WishlistItem i in Model.itemList)
     {
         if (i.item.Dag == "woensdag")
         {
-        <p>@i.Besteltijd  </p>
-        <p>@i.item.Naam  </p>
-        <p>@i.Aantal</p>
+        <p>@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />@i.Aantal maal</p>
+        <p style="text-align:right;">€@i.item.Prijs</p>
         <br />
         }
     }
-        </p></section>
-    <section style="float:left;border-left:1px solid black"><p style="padding-left:2vw;">
-        @foreach(WishlistItem i in Model.itemList)
-        {
-            if(i.item.Dag == "woensdag")
-            {
-                <p>€@i.item.Prijs</p>
-                <br />
-            }
-        }
         </p></section>
     </section>
     <div style="clear:both;"></div>
     <section style="height:auto; padding:0;">
         <h1 style="float:left; width:5vw; margin-right:3vw;">Donderdag 24/4</h1>
-        <section style="width:20vw;float:left;border-left:1px solid black;"><p style="padding-left:2vw;">
+        <section style="width:20vw;float:left;border-left:1px solid black;height:100%;border-right:1px solid black"><p style="padding-left:2vw;">
     @foreach (WishlistItem i in Model.itemList)
     {
         if (i.item.Dag == "donderdag")
         {
-        <p>@i.Besteltijd  </p>
-        <p>@i.item.Naam  </p>
-        <p>@i.Aantal</p>
+        <p>@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />@i.Aantal maal</p>
+        <p style="text-align:right;">€@i.item.Prijs</p>
         <br />
-        }
-    }</p></section>
-        <section style="float:left;border-left:1px solid black"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in Model.itemList)
-    {
-        if (i.item.Dag == "donderdag")
-        {
-        <p>€@i.item.Prijs</p>
-                <br />
         }
     }</p></section>
     </section>
     <div style="clear:both;"></div>
     <section style="height:auto; padding:0;">
         <h1 style="float:left; width:5vw; margin-right:3vw;">Vrijdag 25/4</h1>
-        <section style="width:20vw;float:left;border-left:1px solid black;"><p style="padding-left:2vw;">
+        <section style="width:20vw;float:left;border-left:1px solid black;height:100%;border-right:1px solid black"><p style="padding-left:2vw;">
     @foreach (WishlistItem i in Model.itemList)
     {
-        if (i.item.Dag == "vrijdag")
-        {
-        <p>@i.Besteltijd  </p>
-        <p>@i.item.Naam  </p>
-        <p>@i.Aantal</p>
+    <p>@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />@i.Aantal maal</p>
+        <p style="text-align:right;">€@i.item.Prijs</p>
         <br />
-        }
-    }</p></section>
-        <section style="float:left;border-left:1px solid black"><p style="padding-left:2vw;">
-    @foreach (WishlistItem i in Model.itemList)
-    {
-        if (i.item.Dag == "vrijdag")
-        {
-        <p>€@i.item.Prijs</p>
-                <br />
-        }
     }</p></section>
     </section>
     <div style="clear:both;"></div>

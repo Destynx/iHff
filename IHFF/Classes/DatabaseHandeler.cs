@@ -55,27 +55,30 @@ namespace IHFF.Classes
             wishList.wishListCode = wishListCode;
             conn = new SqlConnection(connString);
             conn.Open();
-            sql = string.Format("SELECT Betaald FROM Wishlist WHERE Wishlist_Code = {0};", wishListCode);
-            command = new SqlCommand(sql, conn);
-            try {
-                wishList.betaald = (bool)command.ExecuteScalar();
-            }
-            catch
-            {
-                return wishList;
-            }
-            sql = string.Format("SELECT TotaalPrijs FROM Wishlist WHERE Wishlist_Code = {0};", wishListCode);
-            command = new SqlCommand(sql, conn);
-            //wishList.TotaalPrijs = (float)command.ExecuteScalar();
-            sql = string.Format("SELECT (Product_ID, Aantal, TotaalPrijs, Stoel) FROM Bestellingen WHERE Wishlist_ID ="+ wishListCode);
+            sql = string.Format("SELECT * FROM Bestellingen WHERE Wishlist_ID ="+ 1);
             command = new SqlCommand(sql, conn);
             SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
-                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Product_ID"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"] });
+                wishList.itemList.Add(new WishlistItem { item = GetProduct((int)rdr["Product_ID"]), Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
             }
             conn.Close();
             return wishList;
+        }
+
+        public static Product GetProduct(Product Product)
+        {
+            conn = new SqlConnection(connString);
+            conn.Open();
+            sql = string.Format("SELECT * FROM Producten WHERE Item_ID = {0};", Product.ID);
+            command = new SqlCommand(sql, conn);
+            SqlDataReader rdr = command.ExecuteReader();
+            if (rdr.Read())
+            {
+                Product = new Product { ID = Product.ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] };
+            }
+            rdr.Close();
+            return Product;
         }
 
         public static Product GetProduct(int Product_ID)
@@ -88,7 +91,7 @@ namespace IHFF.Classes
             SqlDataReader rdr = command.ExecuteReader();
             if (rdr.Read())
             {
-                product = new Product { ID = Product_ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"]};
+                product = new Product { ID = Product_ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"], tijd = (DateTime)rdr["Item_DateTime"]};
             }
             rdr.Close();
             sql = string.Format("SELECT * FROM Locaties WHERE Locatie_ID = {0}", product.Locatie.Locatie_ID);
