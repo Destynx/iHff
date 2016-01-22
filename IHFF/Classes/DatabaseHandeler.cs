@@ -55,10 +55,10 @@ namespace IHFF.Classes
             wishList.wishListCode = wishListCode;
             conn = new SqlConnection(connString);
             conn.Open();
-            sql = string.Format("SELECT * FROM Bestellingen WHERE Wishlist_ID ="+ 1);
+            sql = string.Format("SELECT * FROM Bestellingen WHERE Wishlist_ID ={0}", 1); //Dynamisch maken
             command = new SqlCommand(sql, conn);
             SqlDataReader rdr = command.ExecuteReader();
-            while (rdr.Read())
+            while (rdr.Read()) //Hier een enkele query van maken met een INNER JOIN
             {
                 wishList.itemList.Add(new WishlistItem { item = GetProduct((int)rdr["Product_ID"]), Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
             }
