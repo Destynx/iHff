@@ -284,6 +284,7 @@
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Activity\ProductInfo.cshtml" />
     <Content Include="Views\Activity\RestautantInfo.cshtml" />
+    <Content Include="Views\Activity\RestaurantAgenda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
