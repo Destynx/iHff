@@ -283,7 +283,7 @@
     <Content Include="Views\Activity\Agenda.cshtml" />
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Activity\ProductInfo.cshtml" />
-    <Content Include="Views\Activity\RestautantInfo.cshtml" />
+    <Content Include="Views\Activity\RestaurantInfo.cshtml" />
     <Content Include="Views\Activity\RestaurantAgenda.cshtml" />
   </ItemGroup>
   <ItemGroup>
