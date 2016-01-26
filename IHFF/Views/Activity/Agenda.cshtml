@@ -4,24 +4,21 @@
 }
 <section style="background-image: url('@Url.Content("~/images/background.jpg")'); background-size:contain; background-color:#F2F2F2; text-align:center">
     <article style="width: 100%; padding-left: 0; padding-right: 0; padding-top: 0;">
-            @foreach (Product p in ViewBag.Agendalist)
+        @foreach (Product p in ViewBag.Agendalist)
             {
                 if (ViewBag.Day != p.Dag)
                 {
-                    <div class="whitespace" style="width:100%">
-                        <br><br>
-                    </div>
+                <div class="whitespace" style="width:100%">
+                    <br><br>
+                </div>
                     <h2 style="font-size: 40px;">@p.Dag</h2>
-                    ViewBag.Day = p.Dag;
-                }
-                <hr />
+                ViewBag.Day = p.Dag;
+            }
+            <hr />
                 <p>@Html.ActionLink(p.Naam, "productinfo", "Activity", new { id = p.ID }, null)</p>
                 <p>@p.Beschrijving</p>
-                
-            }
-        </article>
+
+        }
+    </article>
     <div class="clear"></div>
 </section>
-
-
-

@@ -280,11 +280,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\RetrieveWishlist.cshtml" />
     <Content Include="Views\Home\Wishlist.cshtml" />
-    <Content Include="Views\Activity\Agenda.cshtml" />
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Activity\ProductInfo.cshtml" />
     <Content Include="Views\Activity\RestaurantInfo.cshtml" />
     <Content Include="Views\Activity\RestaurantAgenda.cshtml" />
+    <Content Include="Views\Activity\Agenda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

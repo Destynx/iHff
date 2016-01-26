@@ -21,8 +21,7 @@ namespace IHFF.Controllers
 
         public ActionResult Index()
         {
-            wishlist.NewList();
-            //Moet hier een session worden aangemaakt als er een nieuwe wishlist gemaakt moet worden?
+            wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;
             return View(wishlist);
         }
         [HttpPost]
@@ -30,16 +29,6 @@ namespace IHFF.Controllers
         {
             code = wishListCode;
             wishlist = DatabaseHandler.GetWishlist(code);
-            /*foreach(WishlistItem wli in wishlist.itemList)
-            {
-                DatabaseHandler.GetProduct(wli.item);
-            }*/
-            if (session != null)
-            {
-            FormsAuthentication.SetAuthCookie(wishlist.wishListCode.ToString(), false);
-            Session["Aangemelde_Wishlist"] = session;
-                //session.wishlistCode = wishlist.wishListCode();
-            }
             return View(wishlist);
 
         }
@@ -102,14 +91,14 @@ namespace IHFF.Controllers
 
         public ActionResult clearWishlist()
         {
-            wishlist = new WishList { wishListCode = (WishList)Session["wishList"].wishListCode };
+            wishlist = new WishList { wishListCode = (System.Web.HttpContext.Current.Session["wishList"] as WishList).wishListCode };
             DatabaseHandler.UpdateWishlist(wishlist);
             return View(wishlist);  
         }
 
         public ActionResult saveWishlist()
         {
-            WishList wishlist = Session["wishlist"];
+            WishList wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;
             DatabaseHandler.AddWishlist(wishlist);
             return View(wishlist);
         }

@@ -31,14 +31,14 @@ namespace IHFF.Controllers
             int amount = Convert.ToInt32(form["Aantal"]);
             int id = Convert.ToInt32(form["hidden_id"]);
 
-            if (Session["wishlist"] == null)
+            if (System.Web.HttpContext.Current.Session["wishlist"] == null)
             {
                 wishlist.NewList();
-                Session["wishlist"] = wishlist;
+                System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
             }
             else
             {
-                wishlist = DatabaseHandler.GetWishlist(Convert.ToInt32(Session["wishlist"]));
+                wishlist = DatabaseHandler.GetWishlist((System.Web.HttpContext.Current.Session["wishlist"] as WishList).wishListCode);
             }
 
             bool checkExists = false;
