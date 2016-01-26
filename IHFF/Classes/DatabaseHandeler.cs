@@ -55,17 +55,18 @@ namespace IHFF.Classes
 
         public static WishList GetWishlist(int wishListCode)
         {
+            if (!WishListExists(wishListCode)) { return new WishList {wishListCode = wishListCode}; }
             WishList wishList = new WishList();
             wishList.itemList = new List<WishlistItem>();
             wishList.wishListCode = wishListCode;
             conn = new SqlConnection(connString);
             conn.Open();
-            sql = string.Format("SELECT * FROM Bestellingen WHERE Wishlist_ID ={0}", 1); //Dynamisch maken
+            sql = string.Format("SELECT * FROM Bestellingen INNER JOIN Producten ON Bestellingen.Product_ID=Producten.Item_ID WHERE Wishlist_ID ={0}", GetWishlistID(wishListCode));
             command = new SqlCommand(sql, conn);
             SqlDataReader rdr = command.ExecuteReader();
-            while (rdr.Read()) //Hier een enkele query van maken met een INNER JOIN
+            while (rdr.Read())
             {
-                wishList.itemList.Add(new WishlistItem { item = GetProduct((int)rdr["Product_ID"]), Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
+                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
             }
             conn.Close();
             return wishList;
@@ -119,7 +120,6 @@ namespace IHFF.Classes
                 if (rdr.Read())
                 {
                     restaurant = new Restaurant { ID = product.ID, Naam = product.Naam, Beschrijving = product.Beschrijving, Locatie = product.Locatie, Plaatsen = product.Plaatsen, Keuken = (string)rdr["Soort_Keuken"], Openingstijd = (DateTime)rdr["Openingstijd"], Dinnerswitch = (DateTime)rdr["Dinertijd"], Sluitingstijd = (DateTime)rdr["Sluitingstijd"], Dag = (string)rdr["Dag"]};
-                    //Checken of dit werkt.
                 }
                 return restaurant;
             }
@@ -224,6 +224,15 @@ namespace IHFF.Classes
                 return true;
             }
             return false;
+        }
+
+        private static int GetWishlistID(int wishListCode)
+        {
+            conn = new SqlConnection(connString);
+            conn.Open();
+            sql = string.Format("SELECT Wishlist_ID from Wishlist WHERE Wishlist_Code = {0}", wishListCode);
+            command = new SqlCommand(sql, conn);
+            return (int)command.ExecuteScalar();
         }
     }
 }
