@@ -29,7 +29,11 @@ namespace IHFF.Controllers
         public ActionResult Index(int wishListCode)
         {
             code = wishListCode;
-            this.wishlist = DatabaseHandler.GetWishlist(code);
+            wishlist = DatabaseHandler.GetWishlist(code);
+            /*foreach(WishlistItem wli in wishlist.itemList)
+            {
+                DatabaseHandler.GetProduct(wli.item);
+            }*/
             if (session != null)
             {
             FormsAuthentication.SetAuthCookie(wishlist.wishListCode.ToString(), false);
@@ -95,5 +99,19 @@ namespace IHFF.Controllers
             this.wishlist = DatabaseHandler.GetWishlist(code);
             return View(wishlist.itemList);
         }
+
+        public ActionResult clearWishlist()
+        {
+            wishlist = new WishList { wishListCode = Session.wishList.wishListCode };
+            DatabaseHandler.UpdateWishlist(wishlist);
+            return View(wishlist);  
+        }
+
+        public ActionResult saveWishlist()
+        {
+            wishlist = Session.wishList;
+            DatabaseHandler.AddWishlist(wishlist);
+            return View(wishlist);
+        }
     }
-}
+} 
