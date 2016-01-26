@@ -11,6 +11,13 @@ namespace IHFF.Models
         public Product item = new Product();
         public DateTime Besteltijd = new DateTime();
         public int StoelNummer;
-        public int Aantal;   
+        public int Aantal;
+
+        public WishlistItem() { }
+
+        public WishlistItem(int id, int amount)
+        {
+
+        }
     }
 }

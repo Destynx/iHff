@@ -27,11 +27,39 @@ namespace IHFF.Controllers
         [HttpPost]
         public ActionResult ProductInfo(FormCollection form)
         {
-            int id;
-            int amount;
-            amount = Convert.ToInt32(form["Aantal"]);
-            id = Convert.ToInt32(form["hidden_id"]);
+            WishList wishlist = new WishList();
+            int amount = Convert.ToInt32(form["Aantal"]);
+            int id = Convert.ToInt32(form["hidden_id"]);
 
+            if (Session["wishlist"] == null)
+            {
+                wishlist.NewList();
+                Session["wishlist"] = wishlist;
+            }
+            else
+            {
+                wishlist = DatabaseHandler.GetWishlist(Convert.ToInt32(Session["wishlist"]));
+            }
+
+            bool checkExists = false;
+
+            foreach(WishlistItem wi in wishlist.itemList)
+            {
+                if (wi.item.ID == id)
+                {
+                    wi.Aantal += amount;
+                    checkExists = true;
+                    break;
+                }
+            }
+
+            if (!checkExists)
+            {
+                wishlist.itemList.Add(new WishlistItem(id, amount));
+            }
+
+
+            
             return View();
         }
         public ActionResult Agenda()
