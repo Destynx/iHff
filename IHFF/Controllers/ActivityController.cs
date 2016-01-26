@@ -11,6 +11,11 @@ namespace IHFF.Controllers
     public class ActivityController : Controller
     {
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult ProductInfo(int ID)
         {
             Product films = DatabaseHandler.GetProduct(ID);
@@ -37,6 +42,13 @@ namespace IHFF.Controllers
             ViewBag.AgendaList = AgendaList;
             ViewBag.Day = "";
 
+            return View();
+        }
+
+        public ActionResult RestaurantAgenda()
+        {
+            List<Restaurant> RestaurantList = DatabaseHandler.GetAllRestaurants();
+            ViewBag.RestaurantList = RestaurantList;
             return View();
         }
 
