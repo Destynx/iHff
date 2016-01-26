@@ -37,6 +37,11 @@ namespace IHFF.Classes
 
         public static void UpdateWishlist(WishList wishlist)
         {
+            if (!WishListExists(wishlist.wishListCode))
+            {
+                AddWishlist(wishlist);
+                return;
+            }
             conn = new SqlConnection(connString);
             conn.Open();
             sql = string.Format("DELETE FROM Bestellingen WHERE Wishlist_ID=" + wishlist.wishListCode);
@@ -175,6 +180,50 @@ namespace IHFF.Classes
             }
             conn.Close();
             return AlleProducten;
+        }
+
+        public static List<Product> GetAllRestaurants()
+        {
+            List<Product> AlleRestaurants = new List<Product>();
+            List<Locatie> AlleRestaurantLocaties = new List<Locatie>();
+            List<int> RestaurantIDs = new List<int>();
+            conn = new SqlConnection(connString);
+            conn.Open();
+            sql = string.Format("SELECT * FROM Locaties where Restaurant = 1");
+            command = new SqlCommand(sql, conn);
+            SqlDataReader rdr = command.ExecuteReader();
+            while (rdr.Read())
+            {
+                AlleRestaurantLocaties.Add(new Locatie { Locatie_ID = (int)rdr["Locatie_ID"], Naam = (string)rdr["Locatie_Naam"], Adres = string.Format((string)rdr["Locatie_Straatnaam"] + " " + (int)rdr["Locatie_Huisnummer"]), Postcode = (string)rdr["Locatie_Postcode"] });
+            }
+            foreach(Locatie L in AlleRestaurantLocaties)
+            {
+                RestaurantIDs.Add(L.Locatie_ID);
+            }
+            sql = string.Format("SELECT * FROM Producten");
+            command = new SqlCommand(sql, conn);
+            rdr = command.ExecuteReader();
+            while (rdr.Read())
+            {
+                if (RestaurantIDs.Contains((int)rdr["Item_LocatieID"]))
+                {
+                    AlleRestaurants.Add(new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = AlleRestaurantLocaties[RestaurantIDs.IndexOf((int)rdr["Item_LocatieID"])], Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"]});
+                }
+            }
+            return AlleRestaurants;
+        }
+
+        private static bool WishListExists(int wishListCode)
+        {
+            conn = new SqlConnection(connString);
+            conn.Open();
+            sql = string.Format("SELECT COUNT(*) from Wishlist WHERE Wishlist_Code = {0}", wishListCode);
+            command = new SqlCommand(sql, conn);
+            if((int)command.ExecuteScalar() > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

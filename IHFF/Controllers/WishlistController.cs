@@ -99,5 +99,19 @@ namespace IHFF.Controllers
             this.wishlist = DatabaseHandler.GetWishlist(code);
             return View(wishlist.itemList);
         }
+
+        public ActionResult clearWishlist()
+        {
+            wishlist = new WishList { wishListCode = Session.wishList.wishListCode };
+            DatabaseHandler.UpdateWishlist(wishlist);
+            return View(wishlist);  
+        }
+
+        public ActionResult saveWishlist()
+        {
+            wishlist = Session.wishList;
+            DatabaseHandler.AddWishlist(wishlist);
+            return View(wishlist);
+        }
     }
-}
+} 
