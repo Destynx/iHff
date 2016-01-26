@@ -25,7 +25,7 @@ namespace IHFF.Controllers
             return View(wlitem);
         }
         [HttpPost]
-        public ActionResult ProductInfo(FormCollection form)
+        public ActionResult ProductInfo(WishList wl)
         {
             WishList wishlist = new WishList();
             int amount = Convert.ToInt32(form["Aantal"]);

@@ -102,14 +102,14 @@ namespace IHFF.Controllers
 
         public ActionResult clearWishlist()
         {
-            wishlist = new WishList { wishListCode = Session.wishList.wishListCode };
+            wishlist = new WishList { wishListCode = (WishList)Session["wishList"].wishListCode };
             DatabaseHandler.UpdateWishlist(wishlist);
             return View(wishlist);  
         }
 
         public ActionResult saveWishlist()
         {
-            wishlist = Session.wishList;
+            WishList wishlist = Session["wishlist"];
             DatabaseHandler.AddWishlist(wishlist);
             return View(wishlist);
         }
