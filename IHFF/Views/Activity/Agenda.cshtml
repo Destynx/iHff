@@ -12,11 +12,12 @@
                         <br><br>
                     </div>
                     <h2 style="font-size: 40px;">@p.Dag</h2>
+                    ViewBag.Day = p.Dag;
                 }
                 <hr />
                 <p>@Html.ActionLink(p.Naam, "productinfo", "Activity", new { id = p.ID }, null)</p>
                 <p>@p.Beschrijving</p>
-                ViewBag.Day = p.Dag;
+                
             }
         </article>
     <div class="clear"></div>
