@@ -25,11 +25,11 @@ namespace IHFF.Controllers
             return View(wlitem);
         }
         [HttpPost]
-        public ActionResult ProductInfo(WishList wl)
+        public ActionResult ProductInfo(FormCollection Form, WishList wl)
         {
             WishList wishlist = new WishList();
-            int amount = Convert.ToInt32(form["Aantal"]);
-            int id = Convert.ToInt32(form["hidden_id"]);
+            int amount = Convert.ToInt32(Form["Aantal"]);
+            int id = Convert.ToInt32(Form["hidden_id"]);
 
             if (System.Web.HttpContext.Current.Session["wishlist"] == null)
             {
@@ -60,7 +60,7 @@ namespace IHFF.Controllers
 
 
             
-            return View();
+            return View(id);
         }
         public ActionResult Agenda()
         {
