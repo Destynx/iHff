@@ -11,13 +11,7 @@ namespace IHFF.Controllers
 {
     public class WishlistController : Controller
     {
-        //
-        // GET: /Bestelling/
-
-        WishlistItem wishlistitem;
         WishList wishlist = new WishList();
-        int code;
-        private object session;
 
         public ActionResult Index()
         {
@@ -36,17 +30,9 @@ namespace IHFF.Controllers
         public ActionResult Index(int wishListCode)
         {
             wishlist = DatabaseHandler.GetWishlist(wishListCode);
+            System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
             return View(wishlist);
 
-        }
-
-        //Om de wishlist op te halen uit de database en te laten zien op de wishlistpagina
-        public ActionResult RetrieveWishlist(string tekst)
-        {
-            int code = int.Parse(tekst);
-            this.wishlist = DatabaseHandler.GetWishlist(code);
-            System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
-            return RedirectToAction("Index");
         }
         
         public ActionResult clearWishlist()
