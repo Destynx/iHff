@@ -103,26 +103,7 @@ namespace IHFF.Classes
             sql = string.Format("SELECT * FROM Locaties WHERE Locatie_ID = {0}", product.Locatie.Locatie_ID);
             command = new SqlCommand(sql, conn);
             rdr = command.ExecuteReader();
-            if (rdr.Read())
-            {
-                product.Locatie.Adres = string.Format((string)rdr["Locatie_Straatnaam"] + " " + (int)rdr["Locatie_Huisnummer"]);
-                product.Locatie.Naam = (string)rdr["Locatie_Naam"];
-                product.Locatie.Postcode = (string)rdr["Locatie_Postcode"];
-                product.Locatie.IsRestaurant = (bool)rdr["Restaurant"];
-            }
             rdr.Close();
-            if (product.Locatie.IsRestaurant)
-            {
-                Restaurant restaurant = new Restaurant();
-                sql = string.Format("SELECT * FROM Restaurants WHERE Locatie_ID = {0};", product.Locatie.Locatie_ID);
-                command = new SqlCommand(sql, conn);
-                rdr = command.ExecuteReader();
-                if (rdr.Read())
-                {
-                    restaurant = new Restaurant { ID = product.ID, Naam = product.Naam, Beschrijving = product.Beschrijving, Locatie = product.Locatie, Openingstijd = (DateTime)rdr["Openingstijd"], Dinnerswitch = (DateTime)rdr["Dinertijd"], Sluitingstijd = (DateTime)rdr["Sluitingstijd"]};
-                }
-                return restaurant;
-            }
             return product;
         }
 

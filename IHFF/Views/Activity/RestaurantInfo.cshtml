@@ -1,4 +1,4 @@
-﻿@model IHFF.Models.Restaurant
+﻿@model IHFF.Models.WishlistItem
 
 @{
     ViewBag.Title = "RestautantInfo";
@@ -6,12 +6,23 @@
 
 <section style="background-image: url('@Url.Content("~/images/background.jpg")'); background-size:contain; background-color:#F2F2F2; min-height:750px;">
     <article style="text-align:center">
-        <h2>@Model.Naam<br /><i>@Model.Beschrijving</i></h2>
+        <h2>@Model.item.Naam<br /></h2>        
         <p>
-            @ViewBag.Beschrijving
+        <h2>Soort restaurant: @Model.item.Beschrijving </h2>
         </p>
-        <p style="text-align:left; font-style:italic;">
-            @Model.Locatie - @Model.Locatie.Adres
+        <p>
+            @using (Html.BeginForm())
+            {
+            @Html.LabelFor(m => m.Aantal)
+                @Html.TextArea("Aantal")
+                @Html.ValidationMessageFor(m => m.Aantal)
+                @Html.TextArea("Dag")
+                @Html.ValidationMessageFor(m => m.item.Dag)
+                @Html.TextArea("Tijd")
+                @Html.ValidationMessageFor(m => m.Besteltijd)
+                <input type="hidden" name="hidden_id" value="@Model.item.ID" />
+                <input type="submit" value="Toevoegen" />
+            }
         </p>
        
     </article>
