@@ -16,5 +16,6 @@
 }
 
 <p>Totaalprijs: €@Model.TotaalPrijs</p>
-<button onclick="window.location='@Url.Action("payWishlist", "Wishlist", new { })'">Betalen</button>
+@using (Html.BeginForm("payWishlist", "wishlist"))
+{<button>Betalen</button>}
 

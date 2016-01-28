@@ -23,7 +23,7 @@ namespace IHFF.Classes
         {
             conn = new SqlConnection(connString);
             conn.Open();
-            string sql = string.Format("UPDATE Wishlist WHERE Wishlist_ID={0} (Wishlist_betaald) values('{1}')", GetWishlistID(wishlist.wishListCode), wishlist.betaald);
+            string sql = string.Format("UPDATE Wishlist SET Betaald='{0}' WHERE Wishlist_ID={1}", wishlist.betaald, GetWishlistID(wishlist.wishListCode));
             command = new SqlCommand(sql, conn);
             command.ExecuteNonQuery();
             conn.Close();
