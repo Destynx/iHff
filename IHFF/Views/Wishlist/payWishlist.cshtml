@@ -5,8 +5,6 @@
 }
 
 <h2>Betaal pagina</h2>
-if (Session != null)
-{
 
 @foreach (WishlistItem wli in Model.itemList)
 {
@@ -16,7 +14,7 @@ if (Session != null)
     <p>@wli.Aantal x)&nbsp;&nbsp;&nbsp;@wli.item.Naam &nbsp;&nbsp;&nbsp;€@(wli.item.Prijs * wli.Aantal)</p>
     
 }
-}
+
 <p>@Model.TotaalPrijs</p>
-<button onclick="window.location='@Url.Action("", "", new { })'">Betalen</button>
+<button onclick="window.location='@Url.Action("payWishlist", "", new { })'">Betalen</button>
 

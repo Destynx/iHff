@@ -19,6 +19,15 @@ namespace IHFF.Classes
         static string sql;
         static SqlCommand command;
 
+        public static void PayWishlist(WishList wishlist)
+        {
+            conn = new SqlConnection(connString);
+            conn.Open();
+            string sql = string.Format("UPDATE Wishlist WHERE Wishlist_ID={0} (Wishlist_betaald) values('{1}')", GetWishlistID(wishlist.wishListCode), wishlist.betaald);
+            command = new SqlCommand(sql, conn);
+            command.ExecuteNonQuery();
+            conn.Close();
+        }
         public static void AddWishlist(WishList wishlist)
         {
             conn = new SqlConnection(connString);
