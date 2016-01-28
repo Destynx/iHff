@@ -1,0 +1,13 @@
+﻿@using IHFF.Models
+@model WishList
+@{
+    ViewBag.Title = "payWishlist";
+}
+
+<h2>payWishlist</h2>
+
+@foreach (WishlistItem wli in ViewBag.wishlist)
+{
+    <p>@ViewBag.wishlist.prijs</p>
+}
+
