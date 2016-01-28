@@ -262,7 +262,7 @@
     <Content Include="Views\Activity\RestaurantInfo.cshtml" />
     <Content Include="Views\Activity\RestaurantAgenda.cshtml" />
     <Content Include="Views\Activity\Agenda.cshtml" />
-    <Content Include="Views\Wishlist\Betaling.cshtml" />
+    <Content Include="Views\Wishlist\payWishlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

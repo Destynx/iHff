@@ -11,7 +11,7 @@
     <article style="text-align:center">
         <h2>@Model.item.Naam <br /><i>@Model.item.Dag</i></h2>
         <p>
-            @ViewBag.Beschrijving
+            @Model.item.Beschrijving
         </p>
         <p style="text-align:left; font-style:italic;">
             @Model.item.Locatie.Naam - @Model.item.Locatie.Adres
@@ -22,7 +22,7 @@
                 @Html.LabelFor(m => m.Aantal)
                 @Html.TextArea("Aantal")
                 @Html.ValidationMessageFor(m => m.Aantal)
-                <input type="hidden" name="hidden_id" value="@ViewBag.id" />
+                <input type="hidden" name="hidden_id" value="@Model.item.ID" />
                 <input type="submit" value="Toevoegen"/>
             }
         </p>

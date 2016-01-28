@@ -30,8 +30,6 @@ namespace IHFF.Controllers
         {
             Product films = DatabaseHandler.GetProduct(ID);
             WishlistItem wlitem = new WishlistItem { item = films };
-            ViewBag.id = ID;
-            ViewBag.film = films;
             return View(wlitem);
         }
 
@@ -45,7 +43,7 @@ namespace IHFF.Controllers
 
             if (System.Web.HttpContext.Current.Session["wishlist"] != null)
             {
-                wishlist = DatabaseHandler.GetWishlist((System.Web.HttpContext.Current.Session["wishlist"] as WishList).wishListCode);
+                wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;
                 foreach (WishlistItem wlitem in wishlist.itemList)
                 {
                     if (wlitem.item.ID == id)
@@ -53,6 +51,13 @@ namespace IHFF.Controllers
                         wlitem.Aantal = amount;
                         wli = wlitem;
                         wli.item.Locatie = DatabaseHandler.GetLocatie(wli.item.Locatie.Locatie_ID);
+                        break;
+                    }
+                    else
+                    {
+                        wli = new WishlistItem { item = DatabaseHandler.GetProduct(id), Aantal = amount };
+                        wishlist.itemList.Add(wli);
+                        break;
                     }
                 }
             }

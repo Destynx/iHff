@@ -48,9 +48,11 @@ namespace IHFF.Controllers
             DatabaseHandler.AddWishlist(wishlist);
             return RedirectToAction("Index");
         }
-        public ActionResult Betaling()
+        public ActionResult payWishlist()
         {
-            return View();
+            ViewBag.wishlist = wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;
+
+            return View(wishlist);
         }
     }
 } 
