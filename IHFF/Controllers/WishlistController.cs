@@ -48,11 +48,18 @@ namespace IHFF.Controllers
             DatabaseHandler.AddWishlist(wishlist);
             return RedirectToAction("Index");
         }
-        public ActionResult payWishlist()
+        public ActionResult payWishlist(int? kees)
         {
             ViewBag.wishlist = wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;
 
             return View(wishlist);
+        }
+        [HttpPost]
+        public ActionResult payWishlist()
+        {
+            wishlist.betaald = true;
+            DatabaseHandler.PayWishlist(wishlist);
+            return Redirect("http://www.ideal.com");
         }
     }
 } 
