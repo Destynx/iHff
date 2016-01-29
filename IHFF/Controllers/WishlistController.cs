@@ -48,5 +48,9 @@ namespace IHFF.Controllers
             DatabaseHandler.AddWishlist(wishlist);
             return RedirectToAction("Index");
         }
+        public ActionResult Betaling()
+        {
+            return View();
+        }
     }
 } 
