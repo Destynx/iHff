@@ -32,7 +32,7 @@
         if (i.item.Dag == "woensdag")
         {
         <p><b>&nbsp;&nbsp;&nbsp;@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />&nbsp;&nbsp;&nbsp;@i.Aantal maal</b></p>
-        <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@i.item.Prijs &nbsp;&nbsp;&nbsp;</b></p>
+        <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@(i.Aantal * i.item.Prijs) &nbsp;&nbsp;&nbsp;</b></p>
         <br />
         }
         }
@@ -47,7 +47,7 @@
         if (i.item.Dag == "donderdag")
         {
         <p><b>&nbsp;&nbsp;&nbsp;@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />&nbsp;&nbsp;&nbsp;@i.Aantal maal</b></p>
-        <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@i.item.Prijs &nbsp;&nbsp;&nbsp;</b></p>
+        <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@(i.Aantal * i.item.Prijs) &nbsp;&nbsp;&nbsp;</b></p>
         <br />
         }
     }</p></section>
@@ -61,11 +61,43 @@
         if (i.item.Dag == "vrijdag")
         {
         <p><b>&nbsp;&nbsp;&nbsp;@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />&nbsp;&nbsp;&nbsp;@i.Aantal maal</b></p>
-        <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@i.item.Prijs &nbsp;&nbsp;&nbsp;</b></p>
+        <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@(i.Aantal * i.item.Prijs) &nbsp;&nbsp;&nbsp;</b></p>
         <br />
         }
     }</p></section>
     </section>
     <div style="clear:both;"></div>
+    <section style="height:auto; padding:0;">
+        <h1 style="float:left; width:5vw; margin-right:3vw;">Zaterdag 26/4</h1>
+        <section style="width:20vw;float:left;border-left:1px solid black;height:100%;border-right:1px solid black">
+            <p style="padding-left:2vw;">
+                @foreach (WishlistItem i in Model.itemList)
+                {
+                    if (i.item.Dag == "zaterdag")
+                    {
+                    <p><b>&nbsp;&nbsp;&nbsp;@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />&nbsp;&nbsp;&nbsp;@i.Aantal maal</b></p>
+                    <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@(i.Aantal * i.item.Prijs) &nbsp;&nbsp;&nbsp;</b></p>
+                    <br />
+                    }
+                }</p>
+            </section>
+        </section>
+        <div style="clear:both;"></div>
+    <section style="height:auto; padding:0;">
+        <h1 style="float:left; width:5vw; margin-right:3vw;">Zondag 27/4</h1>
+        <section style="width:20vw;float:left;border-left:1px solid black;height:100%;border-right:1px solid black">
+            <p style="padding-left:2vw;">
+                @foreach (WishlistItem i in Model.itemList)
+                {
+                    if (i.item.Dag == "zondag")
+                    {
+                    <p><b>&nbsp;&nbsp;&nbsp;@i.item.tijd.ToString("HH:mm")&nbsp;&nbsp;@i.item.Naam<br />&nbsp;&nbsp;&nbsp;@i.Aantal maal</b></p>
+                    <p style="text-align:right;padding:0,1vw,0,1vw"><b>€@(i.Aantal * i.item.Prijs) &nbsp;&nbsp;&nbsp;</b></p>
+                    <br />
+                    }
+                }</p>
+            </section>
+        </section>
+        <div style="clear:both;"></div>
 
 </section>

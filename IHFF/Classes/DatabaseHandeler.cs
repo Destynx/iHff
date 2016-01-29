@@ -66,7 +66,7 @@ namespace IHFF.Classes
             SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
-                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
+                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"], Prijs = 7.50}, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
             }
             conn.Close();
             return wishList;
@@ -81,7 +81,7 @@ namespace IHFF.Classes
             SqlDataReader rdr = command.ExecuteReader();
             if (rdr.Read())
             {
-                Product = new Product { ID = Product.ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] };
+                Product = new Product { ID = Product.ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"], Prijs = 7.50};
             }
             rdr.Close();
             return Product;
@@ -97,7 +97,7 @@ namespace IHFF.Classes
             SqlDataReader rdr = command.ExecuteReader();
             if (rdr.Read())
             {
-                product = new Product { ID = Product_ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"], tijd = (DateTime)rdr["Item_DateTime"]};
+                product = new Product { ID = Product_ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"], tijd = (DateTime)rdr["Item_DateTime"], Prijs = 7.50};
             }
             rdr.Close();
             sql = string.Format("SELECT * FROM Locaties WHERE Locatie_ID = {0}", product.Locatie.Locatie_ID);
@@ -119,7 +119,7 @@ namespace IHFF.Classes
                 rdr = command.ExecuteReader();
                 if (rdr.Read())
                 {
-                    restaurant = new Restaurant { ID = product.ID, Naam = product.Naam, Beschrijving = product.Beschrijving, Locatie = product.Locatie, Plaatsen = product.Plaatsen, Keuken = (string)rdr["Soort_Keuken"], Openingstijd = (DateTime)rdr["Openingstijd"], Dinnerswitch = (DateTime)rdr["Dinertijd"], Sluitingstijd = (DateTime)rdr["Sluitingstijd"], Dag = (string)rdr["Dag"]};
+                    restaurant = new Restaurant { ID = product.ID, Naam = product.Naam, Beschrijving = product.Beschrijving, Locatie = product.Locatie, Openingstijd = (DateTime)rdr["Openingstijd"], Dinnerswitch = (DateTime)rdr["Dinertijd"], Sluitingstijd = (DateTime)rdr["Sluitingstijd"]};
                 }
                 return restaurant;
             }
@@ -176,7 +176,7 @@ namespace IHFF.Classes
             SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
-                AlleProducten.Add(new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] });
+                AlleProducten.Add(new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] });
             }
             conn.Close();
             return AlleProducten;
@@ -243,7 +243,7 @@ namespace IHFF.Classes
             Locatie loc = new Locatie();
             conn = new SqlConnection(connString);
             conn.Open();
-            sql = string.Format("SELECT * FROM Locatie WHERE Locatie_ID = {0}", id);
+            sql = string.Format("SELECT * FROM Locaties WHERE Locatie_ID = {0}", id);
             command = new SqlCommand(sql, conn);
             SqlDataReader rdr = command.ExecuteReader();
             if (rdr.Read())
