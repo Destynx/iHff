@@ -27,40 +27,31 @@ namespace IHFF.Controllers
         [HttpPost]
         public ActionResult ProductInfo(FormCollection Form, WishList wl)
         {
+            WishlistItem wli = new WishlistItem();
             WishList wishlist = new WishList();
             int amount = Convert.ToInt32(Form["Aantal"]);
             int id = Convert.ToInt32(Form["hidden_id"]);
 
-            if (System.Web.HttpContext.Current.Session["wishlist"] == null)
+            if (System.Web.HttpContext.Current.Session["wishlist"] != null)
             {
-                wishlist.NewList();
-                System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
+                wishlist = DatabaseHandler.GetWishlist((System.Web.HttpContext.Current.Session["wishlist"] as WishList).wishListCode);
+                foreach (WishlistItem wlitem in wishlist.itemList)
+                {
+                    if (wlitem.item.ID == id)
+                    {
+                        wlitem.Aantal = amount;
+                        wli = wlitem;
+                        wli.item.Locatie = DatabaseHandler.GetLocatie(wli.item.Locatie.Locatie_ID);
+                    }
+                }
             }
             else
             {
-                wishlist = DatabaseHandler.GetWishlist((System.Web.HttpContext.Current.Session["wishlist"] as WishList).wishListCode);
+                wli = new WishlistItem { item = DatabaseHandler.GetProduct(id), Aantal = amount };
+                wishlist.itemList.Add(wli);
             }
-
-            bool checkExists = false;
-
-            foreach(WishlistItem wi in wishlist.itemList)
-            {
-                if (wi.item.ID == id)
-                {
-                    wi.Aantal += amount;
-                    checkExists = true;
-                    break;
-                }
-            }
-
-            if (!checkExists)
-            {
-                wishlist.itemList.Add(new WishlistItem(id, amount));
-            }
-
-
-            
-            return View(id);
+            System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
+            return View(wli);
         }
         public ActionResult Agenda()
         {

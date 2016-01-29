@@ -82,6 +82,7 @@ namespace IHFF.Controllers
         }
 
         //Om de wishlist op te halen uit de database en te laten zien op de wishlistpagina
+        [HttpPost]
         public ActionResult RetrieveWishlist(string tekst)
         {
             int code = int.Parse(tekst);
@@ -89,13 +90,14 @@ namespace IHFF.Controllers
             return View(wishlist.itemList);
         }
 
+        [HttpPost]
         public ActionResult clearWishlist()
         {
             wishlist = new WishList { wishListCode = (System.Web.HttpContext.Current.Session["wishList"] as WishList).wishListCode };
             DatabaseHandler.UpdateWishlist(wishlist);
             return View(wishlist);  
         }
-
+        [HttpPost]
         public ActionResult saveWishlist()
         {
             WishList wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;

@@ -23,7 +23,7 @@ namespace IHFF.Classes
         {
             conn = new SqlConnection(connString);
             conn.Open();
-            string sql = string.Format("INSERT INTO Wishlist (Wishlist_Code, Betaald) values ('{0}', '{1}')", wishlist.wishListCode, wishlist.betaald);
+            string sql = string.Format("INSERT INTO Wishlist (Wishlist_Code, Betaald, TotaalPrijs) values ('{0}', '{1}', {2})", wishlist.wishListCode, wishlist.betaald, 0);
             command = new SqlCommand(sql, conn);
             command.ExecuteNonQuery();
             foreach (WishlistItem wi in wishlist.itemList)
@@ -66,7 +66,7 @@ namespace IHFF.Classes
             SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
-                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
+                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
             }
             conn.Close();
             return wishList;
@@ -81,7 +81,7 @@ namespace IHFF.Classes
             SqlDataReader rdr = command.ExecuteReader();
             if (rdr.Read())
             {
-                Product = new Product { ID = Product.ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] };
+                Product = new Product { ID = Product.ID, Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] };
             }
             rdr.Close();
             return Product;
@@ -233,6 +233,25 @@ namespace IHFF.Classes
             sql = string.Format("SELECT Wishlist_ID from Wishlist WHERE Wishlist_Code = {0}", wishListCode);
             command = new SqlCommand(sql, conn);
             return (int)command.ExecuteScalar();
+        }
+
+        public static Locatie GetLocatie(int id)
+        {
+            Locatie loc = new Locatie();
+            conn = new SqlConnection(connString);
+            conn.Open();
+            sql = string.Format("SELECT * FROM Locatie WHERE Locatie_ID = {0}", id);
+            command = new SqlCommand(sql, conn);
+            SqlDataReader rdr = command.ExecuteReader();
+            if (rdr.Read())
+            {
+                loc.Adres = string.Format((string)rdr["Locatie_Straatnaam"] + " " + (int)rdr["Locatie_Huisnummer"]);
+                loc.Naam = (string)rdr["Locatie_Naam"];
+                loc.Postcode = (string)rdr["Locatie_Postcode"];
+                loc.IsRestaurant = (bool)rdr["Restaurant"];
+            }
+            rdr.Close();
+            return loc;
         }
     }
 }
