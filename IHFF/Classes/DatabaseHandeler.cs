@@ -182,9 +182,9 @@ namespace IHFF.Classes
             return AlleProducten;
         }
 
-        public static List<Product> GetAllRestaurants()
+        public static List<Restaurant> GetAllRestaurants()
         {
-            List<Product> AlleRestaurants = new List<Product>();
+            List<Restaurant> AlleRestaurants = new List<Restaurant>();
             List<Locatie> AlleRestaurantLocaties = new List<Locatie>();
             List<int> RestaurantIDs = new List<int>();
             conn = new SqlConnection(connString);
@@ -202,14 +202,14 @@ namespace IHFF.Classes
             }
             sql = string.Format("SELECT * FROM Producten");
             command = new SqlCommand(sql, conn);
-            rdr = command.ExecuteReader();
             while (rdr.Read())
             {
                 if (RestaurantIDs.Contains((int)rdr["Item_LocatieID"]))
                 {
-                    AlleRestaurants.Add(new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = AlleRestaurantLocaties[RestaurantIDs.IndexOf((int)rdr["Item_LocatieID"])], Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"]});
+                    AlleRestaurants.Add(new Restaurant { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = AlleRestaurantLocaties[RestaurantIDs.IndexOf((int)rdr["Item_LocatieID"])], Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"]});
                 }
             }
+            conn.Close();
             return AlleRestaurants;
         }
 

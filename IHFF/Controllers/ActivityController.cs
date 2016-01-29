@@ -66,12 +66,23 @@ namespace IHFF.Controllers
 
         public ActionResult RestaurantAgenda()
         {
-            List<Product> RestaurantList = DatabaseHandler.GetAllRestaurants();
-            ViewBag.RestaurantList = RestaurantList;
+            List<Product> AgendaList = DatabaseHandler.GetAllProducts();
+            ViewBag.AgendaList = AgendaList;
+            //List<Restaurant> RestaurantList = DatabaseHandler.GetAllRestaurants();
+            //ViewBag.RestaurantList = RestaurantList;
             return View();
         }
 
-   
+        public ActionResult RestaurantInfo(int ID)
+        {
+            Product restaurant = DatabaseHandler.GetProduct(ID);
+            WishlistItem wlitem = new WishlistItem { item = restaurant };
+            ViewBag.id = ID;
+            ViewBag.restaurant = restaurant;
+            return View(wlitem);
+        }
+
+
 
         public ActionResult AddToWishlist()
         {
