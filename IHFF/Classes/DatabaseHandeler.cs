@@ -113,6 +113,7 @@ namespace IHFF.Classes
             if (product.Locatie.IsRestaurant)
             {
                 Restaurant restaurant = new Restaurant();
+                conn.Open();
                 sql = string.Format("SELECT * FROM Restaurants WHERE Locatie_ID = {0};", product.Locatie.Locatie_ID);
                 command = new SqlCommand(sql, conn);
                 rdr = command.ExecuteReader();
