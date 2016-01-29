@@ -61,12 +61,12 @@ namespace IHFF.Classes
             wishList.wishListCode = wishListCode;
             conn = new SqlConnection(connString);
             conn.Open();
-            sql = string.Format("SELECT * FROM Bestellingen INNER JOIN Producten ON Bestellingen.Product_ID=Producten.Item_ID WHERE Wishlist_ID ={0}", GetWishlistID(wishListCode));
+            sql = string.Format("SELECT * FROM Bestellingen INNER JOIN Producten ON Bestellingen.Product_ID=Producten.Item_ID WHERE Wishlist_ID ={0}", wishListCode);
             command = new SqlCommand(sql, conn);
             SqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
-                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = GetLocatie((int)rdr["Item_LocatieID"]), Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
+                wishList.itemList.Add(new WishlistItem { item = new Product { ID = (int)rdr["Item_ID"], Beschrijving = (string)rdr["Item_Beschrijving"], Locatie = new Locatie { Locatie_ID = (int)rdr["Item_LocatieID"] }, Naam = (string)rdr["Item_Naam"], Plaatsen = (int)rdr["Plaatsen"], Dag = (string)rdr["Dag"] }, Aantal = (int)rdr["Aantal"], StoelNummer = (int)rdr["Stoel"],});
             }
             conn.Close();
             return wishList;
@@ -226,8 +226,9 @@ namespace IHFF.Classes
             return false;
         }
 
-        private static int GetWishlistID(int wishListCode)
+        public static int GetWishlistID(int wishListCode)
         {
+            if (!WishListExists(wishListCode)) return 0;
             conn = new SqlConnection(connString);
             conn.Open();
             sql = string.Format("SELECT Wishlist_ID from Wishlist WHERE Wishlist_Code = {0}", wishListCode);

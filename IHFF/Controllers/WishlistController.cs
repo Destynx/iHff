@@ -22,87 +22,45 @@ namespace IHFF.Controllers
         public ActionResult Index()
         {
             wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;
+            if (wishlist == null)
+            {
+                wishlist = new WishList { wishListCode = 0};
+            }
+            if (wishlist.wishListCode == 0)
+            {
+                wishlist.NewList();
+            }
             return View(wishlist);
         }
         [HttpPost]
         public ActionResult Index(int wishListCode)
         {
-            code = wishListCode;
-            wishlist = DatabaseHandler.GetWishlist(code);
+            wishlist = DatabaseHandler.GetWishlist(wishListCode);
             return View(wishlist);
-
-        }
-        //Om een item te verwijderen
-        public ActionResult DeleteItem(int wishlistId)
-        {
-            /*
-            foreach(WishlistItem item in wishlist.itemList)
-            {
-                if (item.wishlistid == wishlistId)
-                {
-                    wishlist.itemList.Remove(item);
-                    
-                }
-            }
-            */
-            DatabaseHandler.UpdateWishlist(wishlist);
-            return View(wishlist);
-        }
-
-        //Om een item uit de wishlist aan te passen
-        public ActionResult EditItem(int wishlistId)
-        {
-            /*
-            foreach(WishlistItem item in wishlist.itemList)
-            {
-                if(item.wishlistid == wishlistId)
-                {
-                    wishlist.itemList.Remove(item);
-                }
-            }
-            */
-            DatabaseHandler.UpdateWishlist(wishlist);
-            return View();
-        }
-
-        //Om naar de betaling te gaan
-        public ActionResult Payment()
-        {
-            wishlist.betaald = true;
-            DatabaseHandler.UpdateWishlist(wishlist);
-            return View();
-        }
-
-        //Om de wishlist op te slaan
-        public ActionResult SaveWishlist()
-        {
-            DatabaseHandler.UpdateWishlist(wishlist);
-            return View(); 
 
         }
 
         //Om de wishlist op te halen uit de database en te laten zien op de wishlistpagina
-        [HttpPost]
         public ActionResult RetrieveWishlist(string tekst)
         {
             int code = int.Parse(tekst);
             this.wishlist = DatabaseHandler.GetWishlist(code);
-            return View(wishlist.itemList);
+            System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
+            return RedirectToAction("Index");
         }
-
-        [HttpPost]
+        
         public ActionResult clearWishlist()
         {
             wishlist = new WishList { wishListCode = (System.Web.HttpContext.Current.Session["wishList"] as WishList).wishListCode };
             DatabaseHandler.UpdateWishlist(wishlist);
-            return View(wishlist);  
+            System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
+            return RedirectToAction("Index");
         }
-        [HttpPost]
         public ActionResult saveWishlist()
         {
             WishList wishlist = System.Web.HttpContext.Current.Session["wishlist"] as WishList;
             DatabaseHandler.AddWishlist(wishlist);
-            return View(wishlist);
+            return RedirectToAction("Index");
         }
     }
 } 
