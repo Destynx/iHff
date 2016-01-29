@@ -16,6 +16,17 @@ namespace IHFF.Controllers
             return View();
         }
 
+        public ActionResult Agenda()
+        {
+            ViewBag.Message = "De agenda van het IHFF";
+
+            List<Product> AgendaList = DatabaseHandler.GetAllProducts();
+            ViewBag.AgendaList = AgendaList;
+            ViewBag.Day = "";
+
+            return View();
+        }
+
         public ActionResult ProductInfo(int ID)
         {
             Product films = DatabaseHandler.GetProduct(ID);
@@ -52,24 +63,12 @@ namespace IHFF.Controllers
             }
             System.Web.HttpContext.Current.Session["wishlist"] = wishlist;
             return View(wli);
-        }
-        public ActionResult Agenda()
-        {
-            ViewBag.Message = "De agenda van het IHFF";
-
-            List<Product> AgendaList = DatabaseHandler.GetAllProducts();
-            ViewBag.AgendaList = AgendaList;
-            ViewBag.Day = "";
-
-            return View();
-        }
+        }        
 
         public ActionResult RestaurantAgenda()
-        {
-            List<Product> AgendaList = DatabaseHandler.GetAllProducts();
-            ViewBag.AgendaList = AgendaList;
-            //List<Restaurant> RestaurantList = DatabaseHandler.GetAllRestaurants();
-            //ViewBag.RestaurantList = RestaurantList;
+        {            
+            List<Restaurant> RestaurantList = DatabaseHandler.GetAllRestaurants();
+            ViewBag.RestaurantList = RestaurantList;
             return View();
         }
 

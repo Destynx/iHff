@@ -196,12 +196,14 @@ namespace IHFF.Classes
             {
                 AlleRestaurantLocaties.Add(new Locatie { Locatie_ID = (int)rdr["Locatie_ID"], Naam = (string)rdr["Locatie_Naam"], Adres = string.Format((string)rdr["Locatie_Straatnaam"] + " " + (int)rdr["Locatie_Huisnummer"]), Postcode = (string)rdr["Locatie_Postcode"] });
             }
+            rdr.Close();
             foreach(Locatie L in AlleRestaurantLocaties)
             {
                 RestaurantIDs.Add(L.Locatie_ID);
             }
             sql = string.Format("SELECT * FROM Producten");
             command = new SqlCommand(sql, conn);
+            rdr = command.ExecuteReader();
             while (rdr.Read())
             {
                 if (RestaurantIDs.Contains((int)rdr["Item_LocatieID"]))

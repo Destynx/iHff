@@ -5,15 +5,9 @@
 <section style="background-image: url('@Url.Content("~/images/background.jpg")'); background-size:contain; background-color:#F2F2F2; text-align:center">
     <h2>RestaurantAgenda</h2>
     <article style="width: 100%; padding-left: 0; padding-right: 0; padding-top: 0;">
-       @foreach (Product r in ViewBag.AgendaList)
-       {
-           if (r.Dag == "Restaurant")
-           {
-            <p>@Html.ActionLink(r.Naam, "RestaurantInfo", "Activity", new { id = r.ID }, null)</p>
-            <div class="whitespace" style="width:100%">
-                <br><br>
-            </div>     
-           }
+       @foreach (Restaurant r in ViewBag.RestaurantList)
+       {           
+            <p>@Html.ActionLink(r.Naam, "RestaurantInfo", "Activity", new { id = r.ID }, null)</p>           
        }
     </article>
     <div class="clear"></div>
